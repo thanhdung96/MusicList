@@ -1,9 +1,0 @@
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\bin\Debug\MusicList.exe.config
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\bin\Debug\MusicList.exe
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\bin\Debug\MusicList.pdb
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\bin\Debug\MaterialSkin.dll
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\obj\Debug\MusicList.csprojResolveAssemblyReference.cache
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\obj\Debug\MusicList.MainForm.resources
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\obj\Debug\MusicList.csproj.GenerateResource.Cache
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\obj\Debug\MusicList.exe
-C:\Users\chi_b\Documents\Projects\MusicList\MusicList\obj\Debug\MusicList.pdb
