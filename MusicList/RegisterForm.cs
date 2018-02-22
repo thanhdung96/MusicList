@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MusicList
 {
@@ -8,6 +9,12 @@ namespace MusicList
 		public RegisterForm()
 		{
 			InitializeComponent();
+			
+			this.cbxGender.SelectedIndex=0;
+		}
+		void BtnCancelClick(object sender, EventArgs e)
+		{
+			this.Dispose();
 		}
 	}
 }
