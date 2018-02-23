@@ -62,9 +62,9 @@ namespace MusicList
 			this.btnCancel = new MaterialSkin.Controls.MaterialFlatButton();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-			this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
 			this.dtpDOB = new MetroFramework.Controls.MetroDateTime();
 			this.cbxGender = new MetroFramework.Controls.MetroComboBox();
+			this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
 			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
 			this.btnRegister = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.txtConfirm = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -250,20 +250,6 @@ namespace MusicList
 			this.materialLabel5.Text = "Gender:";
 			this.materialLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// materialLabel6
-			// 
-			this.materialLabel6.Depth = 0;
-			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel6.Location = new System.Drawing.Point(225, 0);
-			this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-			this.materialLabel6.Name = "materialLabel6";
-			this.materialLabel6.Size = new System.Drawing.Size(116, 37);
-			this.materialLabel6.TabIndex = 1;
-			this.materialLabel6.Text = "Day of Birth:";
-			this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
 			// dtpDOB
 			// 
 			this.dtpDOB.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -286,6 +272,20 @@ namespace MusicList
 			this.cbxGender.Size = new System.Drawing.Size(105, 29);
 			this.cbxGender.TabIndex = 3;
 			this.cbxGender.UseSelectable = true;
+			// 
+			// materialLabel6
+			// 
+			this.materialLabel6.Depth = 0;
+			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.materialLabel6.Location = new System.Drawing.Point(225, 0);
+			this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+			this.materialLabel6.Name = "materialLabel6";
+			this.materialLabel6.Size = new System.Drawing.Size(116, 37);
+			this.materialLabel6.TabIndex = 1;
+			this.materialLabel6.Text = "Day of Birth:";
+			this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// materialLabel1
 			// 

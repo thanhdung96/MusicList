@@ -129,7 +129,6 @@ namespace MusicList
 			this.txtUsername.SelectionStart = 0;
 			this.txtUsername.Size = new System.Drawing.Size(369, 23);
 			this.txtUsername.TabIndex = 1;
-			this.txtUsername.Text = "Username Here";
 			this.txtUsername.UseSystemPasswordChar = false;
 			// 
 			// tableLayoutPanel2
@@ -163,7 +162,6 @@ namespace MusicList
 			this.txtPassword.SelectionStart = 0;
 			this.txtPassword.Size = new System.Drawing.Size(285, 23);
 			this.txtPassword.TabIndex = 0;
-			this.txtPassword.Text = "Password Here";
 			this.txtPassword.UseSystemPasswordChar = true;
 			// 
 			// btnShow
@@ -202,12 +200,12 @@ namespace MusicList
 			this.btnRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.btnRegister.Depth = 0;
 			this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnRegister.Location = new System.Drawing.Point(4, 6);
-			this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btnRegister.Location = new System.Drawing.Point(0, 0);
+			this.btnRegister.Margin = new System.Windows.Forms.Padding(0);
 			this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Primary = false;
-			this.btnRegister.Size = new System.Drawing.Size(236, 16);
+			this.btnRegister.Size = new System.Drawing.Size(244, 28);
 			this.btnRegister.TabIndex = 0;
 			this.btnRegister.Text = "Register";
 			this.btnRegister.UseVisualStyleBackColor = true;
@@ -218,12 +216,12 @@ namespace MusicList
 			this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.btnCancel.Depth = 0;
 			this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnCancel.Location = new System.Drawing.Point(248, 6);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+			this.btnCancel.Location = new System.Drawing.Point(244, 0);
+			this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
 			this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Primary = false;
-			this.btnCancel.Size = new System.Drawing.Size(237, 16);
+			this.btnCancel.Size = new System.Drawing.Size(245, 28);
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
