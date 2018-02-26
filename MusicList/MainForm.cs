@@ -2,6 +2,8 @@
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Threading;
+using System.Windows.Forms;
+using CustomControls;
 
 namespace MusicList
 {
@@ -52,6 +54,14 @@ namespace MusicList
 			
 			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
 			thread.Start(0);
+			
+			for(int i=0;i<5;i++){
+				CustomFlatButton custom = new CustomFlatButton();
+				custom.Id = i;
+				custom.Dock = DockStyle.Top;
+				custom.Text=i.ToString();
+				pnlPlaylistContent.Controls.Add(custom);
+			}
 		}
 	}
 }
