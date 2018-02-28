@@ -60,8 +60,15 @@ namespace MusicList
 				custom.Id = i;
 				custom.Dock = DockStyle.Top;
 				custom.Text=i.ToString();
+				custom.Click+= custom_Click;
 				pnlPlaylistContent.Controls.Add(custom);
 			}
+		}
+
+		void custom_Click(object sender, EventArgs e)
+		{
+			CustomFlatButton custom = sender as CustomFlatButton;
+			CustomMessageBox.Show("Id: " + custom.Id.ToString(),custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info,CustomMessageBox.AnimateStyle.FadeIn);
 		}
 	}
 }
