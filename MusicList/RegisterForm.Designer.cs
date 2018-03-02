@@ -8,6 +8,7 @@
  */
 namespace MusicList
 {
+	using MaterialSkin.Controls;
 	partial class RegisterForm
 	{
 		/// <summary>
@@ -15,21 +16,21 @@ namespace MusicList
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private MaterialSkin.Controls.MaterialLabel materialLabel1;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txtFullname;
-		private MaterialSkin.Controls.MaterialLabel materialLabel2;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txtEmail;
-		private MaterialSkin.Controls.MaterialLabel materialLabel3;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txtPassword;
-		private MaterialSkin.Controls.MaterialLabel materialLabel4;
-		private MaterialSkin.Controls.MaterialRaisedButton btnRegister;
-		private MaterialSkin.Controls.MaterialFlatButton btnCancel;
+		private MaterialLabel materialLabel1;
+		private MaterialSingleLineTextField txtFullname;
+		private MaterialLabel materialLabel2;
+		private MaterialSingleLineTextField txtEmail;
+		private MaterialLabel materialLabel3;
+		private MaterialSingleLineTextField txtPassword;
+		private MaterialLabel materialLabel4;
+		private MaterialRaisedButton btnRegister;
+		private MaterialFlatButton btnCancel;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private MaterialSkin.Controls.MaterialLabel materialLabel5;
-		private MaterialSkin.Controls.MaterialLabel materialLabel6;
+		private MaterialLabel materialLabel5;
+		private MaterialLabel materialLabel6;
 		private MetroFramework.Controls.MetroDateTime dtpDOB;
 		private MetroFramework.Controls.MetroComboBox cbxGender;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txtConfirm;
+		private MaterialSingleLineTextField txtConfirm;
 		
 		/// <summary>
 		/// Disposes resources used by the form.

@@ -24,6 +24,50 @@ namespace MusicList
 			thread.Start(tabindex);
 		}
 		
+		private void InitTheme()
+		{
+			MaterialSkinManager manager = MaterialSkinManager.Instance;
+			manager.AddFormToManage(this);
+			manager.Theme = MaterialSkinManager.Themes.DARK;
+			manager.ColorScheme = new ColorScheme(Primary.BlueGrey700, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue700, TextShade.WHITE);
+			manager.Theme = MaterialSkinManager.Themes.LIGHT;
+			
+			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
+			thread.Start(0);
+			
+			for (int i = 0; i < 5; i++) {
+				CustomFlatButton custom = new CustomFlatButton();
+				custom.Id = i;
+				custom.Dock = DockStyle.Top;
+				custom.Text = i.ToString();
+				custom.Click += custom_Click;
+				pnlPlaylistContent.Controls.Add(custom);
+			}
+		}
+
+		void custom_Click(object sender, EventArgs e)
+		{
+			CustomFlatButton custom = sender as CustomFlatButton;
+			CustomMessageBox.Show("Id: " + custom.Id.ToString(), custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
+		}
+		
+		void LblFindClick(object sender, EventArgs e)
+		{
+			if (this.txtFind.Width > 0) {
+				if (this.txtFind.Text.Length == 0) {
+					Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
+					t.Start(false as object);
+				} else {
+					CustomMessageBox.Show(this.txtFind.Text, "Find", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
+				}
+			}
+			else{
+					Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
+					t.Start(true as object);
+			}
+		}
+		
+		#region Threading
 		private void EditLableText(object tabindex)
 		{
 			int index = (int)tabindex;
@@ -44,31 +88,19 @@ namespace MusicList
 				Thread.Sleep(1);
 			}
 		}
-		private void InitTheme()
+		private void EditTxtFind(object expend)
 		{
-			MaterialSkinManager manager = MaterialSkinManager.Instance;
-			manager.AddFormToManage(this);
-			manager.Theme = MaterialSkinManager.Themes.DARK;
-			manager.ColorScheme = new ColorScheme(Primary.BlueGrey700, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue700, TextShade.WHITE);
-			manager.Theme = MaterialSkinManager.Themes.LIGHT;
-			
-			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
-			thread.Start(0);
-			
-			for(int i=0;i<5;i++){
-				CustomFlatButton custom = new CustomFlatButton();
-				custom.Id = i;
-				custom.Dock = DockStyle.Top;
-				custom.Text=i.ToString();
-				custom.Click+= custom_Click;
-				pnlPlaylistContent.Controls.Add(custom);
+			int value = (bool)expend == true ? 10 : -10;
+			for (int i = 0; i < 48; i++) {
+				txtFind.Width += value;
+				Thread.Sleep(1);
 			}
 		}
-
-		void custom_Click(object sender, EventArgs e)
+		void TxtFindLeave(object sender, EventArgs e)
 		{
-			CustomFlatButton custom = sender as CustomFlatButton;
-			CustomMessageBox.Show("Id: " + custom.Id.ToString(),custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info,CustomMessageBox.AnimateStyle.FadeIn);
+			Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
+			t.Start(false as object);
 		}
+		#endregion Threading
 	}
 }
