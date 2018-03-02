@@ -42,6 +42,10 @@ namespace MusicList
 				custom.Text = i.ToString();
 				custom.Click += custom_Click;
 				pnlPlaylistContent.Controls.Add(custom);
+				
+				CustomMusicItem musicitem = new CustomMusicItem();
+				musicitem.Dock = DockStyle.Top;
+				pnlMusicItemsList.Controls.Add(musicitem);
 			}
 		}
 
@@ -90,8 +94,8 @@ namespace MusicList
 		}
 		private void EditTxtFind(object expend)
 		{
-			int value = (bool)expend == true ? 10 : -10;
-			for (int i = 0; i < 48; i++) {
+			int value = (bool)expend == true ? 30 : -30;
+			for (int i = 0; i < 16; i++) {
 				txtFind.Width += value;
 				Thread.Sleep(1);
 			}

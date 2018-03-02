@@ -79,6 +79,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="MaterialSkin.dll" />
+    <None Include="Resource\searching-magnifying-glass.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LoginForm.resx">
