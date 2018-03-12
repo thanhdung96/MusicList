@@ -77,6 +77,7 @@ namespace CustomControls
 			// 
 			// tableLayoutPanel2
 			// 
+			this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -118,9 +119,11 @@ namespace CustomControls
 			this.lblMusicName.TabIndex = 3;
 			this.lblMusicName.Text = "Music Name";
 			this.lblMusicName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblMusicName.Click += new System.EventHandler(this.LblMusicNameClick);
 			// 
 			// tableLayoutPanel3
 			// 
+			this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
 			this.tableLayoutPanel3.ColumnCount = 4;
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -166,6 +169,7 @@ namespace CustomControls
 			this.lblSinger.TabIndex = 4;
 			this.lblSinger.Text = "Singer";
 			this.lblSinger.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblSinger.Click += new System.EventHandler(this.LblSingerClick);
 			// 
 			// lblIconMusic
 			// 

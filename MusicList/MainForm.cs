@@ -23,7 +23,19 @@ namespace MusicList
 			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
 			thread.Start(tabindex);
 		}
-		
+
+		void musicitem_ArtitstNameClick(object sender, EventArgs e)
+		{
+			CustomMusicItem item = sender as CustomMusicItem;
+			MessageBox.Show(item.Component);
+		}
+
+		void musicitem_MusicNameClick(object sender, EventArgs e)
+		{
+			CustomMusicItem item = sender as CustomMusicItem;
+			MessageBox.Show(item.Component);
+		}
+
 		private void InitTheme()
 		{
 			MaterialSkinManager manager = MaterialSkinManager.Instance;
@@ -45,6 +57,8 @@ namespace MusicList
 				
 				CustomMusicItem musicitem = new CustomMusicItem();
 				musicitem.Dock = DockStyle.Top;
+				musicitem.ArtitstNameClick+= musicitem_ArtitstNameClick;
+				musicitem.MusicNameClick+= musicitem_MusicNameClick;
 				pnlMusicItemsList.Controls.Add(musicitem);
 			}
 		}
