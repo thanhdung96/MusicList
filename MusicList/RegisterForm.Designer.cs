@@ -266,8 +266,7 @@ namespace MusicList
 			this.cbxGender.ItemHeight = 23;
 			this.cbxGender.Items.AddRange(new object[] {
 			"Female",
-			"Male",
-			"Other"});
+			"Male"});
 			this.cbxGender.Location = new System.Drawing.Point(114, 3);
 			this.cbxGender.Name = "cbxGender";
 			this.cbxGender.Size = new System.Drawing.Size(105, 29);
@@ -316,6 +315,7 @@ namespace MusicList
 			this.btnRegister.TabIndex = 12;
 			this.btnRegister.Text = "Register";
 			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
 			// 
 			// txtConfirm
 			// 

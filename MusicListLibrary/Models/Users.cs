@@ -6,11 +6,12 @@ namespace MusicListLibrary.Models
 	public sealed class Users
 	{
 		public ObjectId Id{get;set;}
-		public String Fullname{get;set;}
-		public String Email{get;set;}
-		public bool Gender{get;set;}
-		public DateTime DOB{get;set;}
-		public bool Disabled{get;set;}
+		public BsonString Fullname{get;set;}
+		public BsonString Email{get;set;}
+		public BsonString Password{get;set;}
+		public BsonBoolean Gender{get;set;}
+		public BsonDateTime DOB{get;set;}
+		public BsonBoolean Disabled{get;set;}
 		
 		public Users(){
 			this.DOB=DateTime.Today;

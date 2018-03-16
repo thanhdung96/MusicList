@@ -24,7 +24,7 @@ namespace MusicList
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new PlaylistMnmtForm());
+			Application.Run(new RegisterForm());
 		}
 		
 	}

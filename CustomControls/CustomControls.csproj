@@ -52,6 +52,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomCheckbox.cs" />
+    <Compile Include="CustomCheckbox.Designer.cs">
+      <DependentUpon>CustomCheckbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomFlatButton.cs" />
     <Compile Include="CustomFlatButton.Designer.cs">
       <DependentUpon>CustomFlatButton.cs</DependentUpon>
@@ -71,6 +75,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomCheckbox.resx">
+      <DependentUpon>CustomCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomMusicItem.resx">
       <DependentUpon>CustomMusicItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +92,10 @@
   <ItemGroup>
     <None Include="Resource\headset-with-microphone.png" />
     <None Include="Resource\play-arrow.png" />
+    <None Include="Resource\repeat_active.png" />
+    <None Include="Resource\repeat_inactive.png" />
+    <None Include="Resource\shuffle_active.png" />
+    <None Include="Resource\shuffle_inactive.png" />
     <None Include="Resource\voice-message-microphone-button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

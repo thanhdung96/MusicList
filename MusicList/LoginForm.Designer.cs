@@ -176,6 +176,8 @@ namespace MusicList
 			this.btnShow.TabIndex = 1;
 			this.btnShow.Text = "Show";
 			this.btnShow.UseVisualStyleBackColor = true;
+			this.btnShow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnShowMouseDown);
+			this.btnShow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnShowMouseUp);
 			// 
 			// tableLayoutPanel3
 			// 
@@ -209,6 +211,7 @@ namespace MusicList
 			this.btnRegister.TabIndex = 0;
 			this.btnRegister.Text = "Register";
 			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
 			// 
 			// btnCancel
 			// 
@@ -225,6 +228,7 @@ namespace MusicList
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
 			// 
 			// btnLogin
 			// 

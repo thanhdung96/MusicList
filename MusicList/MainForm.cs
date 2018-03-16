@@ -4,17 +4,26 @@ using MaterialSkin;
 using System.Threading;
 using System.Windows.Forms;
 using CustomControls;
+using MusicListLibrary.Models;
 
 namespace MusicList
 {
 	public partial class MainForm : MaterialForm
 	{
+		private static Users session;
+		
 		public MainForm()
 		{
 			InitializeComponent();
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
+			
+			if (MainForm.session == null) {
+				LoginForm login = new LoginForm();
+				login.ShowInTaskbar = false;
+				login.ShowDialog(this);
+			}
 		}
 
 		void tcMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,8 +66,8 @@ namespace MusicList
 				
 				CustomMusicItem musicitem = new CustomMusicItem();
 				musicitem.Dock = DockStyle.Top;
-				musicitem.ArtitstNameClick+= musicitem_ArtitstNameClick;
-				musicitem.MusicNameClick+= musicitem_MusicNameClick;
+				musicitem.ArtitstNameClick += musicitem_ArtitstNameClick;
+				musicitem.MusicNameClick += musicitem_MusicNameClick;
 				pnlMusicItemsList.Controls.Add(musicitem);
 			}
 		}
@@ -69,6 +78,13 @@ namespace MusicList
 			CustomMessageBox.Show("Id: " + custom.Id.ToString(), custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
 		}
 		
+		void BtnShowPlaylistsClick(object sender, EventArgs e)
+		{
+			PlaylistMnmtForm pl = new PlaylistMnmtForm();
+			pl.ShowInTaskbar=false;
+			pl.ShowDialog(this);
+		}
+
 		void LblFindClick(object sender, EventArgs e)
 		{
 			if (this.txtFind.Width > 0) {
@@ -78,10 +94,9 @@ namespace MusicList
 				} else {
 					CustomMessageBox.Show(this.txtFind.Text, "Find", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
 				}
-			}
-			else{
-					Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
-					t.Start(true as object);
+			} else {
+				Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
+				t.Start(true as object);
 			}
 		}
 		

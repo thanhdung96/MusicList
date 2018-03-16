@@ -9,7 +9,7 @@ using MusicListLibrary.Models;
 
 namespace MusicListLibrary.Repositories
 {
-	public class MongoRepository:IRepository
+	internal class MongoRepository:IRepository
 	{
 		private MongoClient client;
 		private IMongoDatabase db;
@@ -32,7 +32,7 @@ namespace MusicListLibrary.Repositories
 		
 		public void AddOne<T>(T item) where T:class, new()
 		{
-			String collectionName = typeof(T) == typeof(Users) ? "Users" : "Playlists";
+			String collectionName = item is Users ? "Users" : "Playlists";
 			db.GetCollection<T>(collectionName).InsertOne(item);
 		}
 		
@@ -44,7 +44,7 @@ namespace MusicListLibrary.Repositories
 		
 		public void DeleteOne<T>(T item) where T:class, new()
 		{
-			String collectionName = typeof(T) == typeof(Users) ? "Users" : "Playlists";
+			String collectionName = item is Users ? "Users" : "Playlists";
 			var filter = Builders<T>.Filter.Eq("Id", item.GetType().GetProperty("Id").GetValue(item, null));
 			db.GetCollection<T>(collectionName).DeleteOne(filter);
 		}
@@ -53,9 +53,16 @@ namespace MusicListLibrary.Repositories
 		{
 			IQueryable items = All<T>().Where(expression);
 			String collectionName = typeof(T) == typeof(Users) ? "Users" : "Playlists";
-			foreach(T item in items){
+			foreach (T item in items) {
 				this.DeleteOne(item);
 			}
+		}
+
+		public void UpdateOne<T>(T item) where T:class, new()
+		{
+			String collectionName = item is Users ? "Users" : "Playlists";
+			var filter = Builders<T>.Filter.Eq("Id", item.GetType().GetProperty("Id").GetValue(item, null));
+			db.GetCollection<T>(collectionName).FindOneAndReplace(filter, item);
 		}
 		
 		public void Dispose()

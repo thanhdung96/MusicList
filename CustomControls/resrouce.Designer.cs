@@ -83,6 +83,46 @@ namespace CustomControls {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
+		internal static System.Drawing.Bitmap repeat_active {
+			get {
+				object obj = ResourceManager.GetObject("repeat_active", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap repeat_inactive {
+			get {
+				object obj = ResourceManager.GetObject("repeat_inactive", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap shuffle_active {
+			get {
+				object obj = ResourceManager.GetObject("shuffle_active", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap shuffle_inactive {
+			get {
+				object obj = ResourceManager.GetObject("shuffle_inactive", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
 		internal static System.Drawing.Bitmap voice_message_microphone_button {
 			get {
 				object obj = ResourceManager.GetObject("voice-message-microphone-button", resourceCulture);
