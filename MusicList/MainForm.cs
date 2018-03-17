@@ -11,13 +11,18 @@ namespace MusicList
 	public partial class MainForm : MaterialForm
 	{
 		private static Users session;
-		
+
+		void customCheckbox1_ptbIconClick(object sender, EventArgs e)
+		{
+			
+		}
 		public MainForm()
 		{
 			InitializeComponent();
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
+			this.customCheckbox1.ptbIconClick +=  customCheckbox1_ptbIconClick;
 			
 			if (MainForm.session == null) {
 				LoginForm login = new LoginForm();

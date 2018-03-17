@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace MusicListLibrary.Controllers
 {
-	public class UsersController
+	public sealed class UsersController
 	{
 		private readonly UsersRepository repo;
 		
 		public UsersController()
 		{
-			repo = new UsersRepository();
+				repo = new UsersRepository();
 		}
 		
 		public bool IsExist(Users user)

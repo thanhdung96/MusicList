@@ -8,6 +8,8 @@ namespace CustomControls
 {
 	public partial class CustomCheckbox : UserControl
 	{
+		public event EventHandler ptbIconClick;
+
 		public enum functions
 		{
 			Shuffle,
@@ -17,14 +19,6 @@ namespace CustomControls
 		[ListBindable(true), Editor(typeof(ComboBox), typeof(UITypeEditor))]
 		public functions Function{ get; set; }
 		
-		public String Text {
-			get {
-				return this.lblText.Text;
-			}
-			set {
-				this.lblText.Text = value;
-			}
-		}
 		private bool status;
 		public bool Checked { 
 			get {
@@ -35,7 +29,6 @@ namespace CustomControls
 				status = value;
 			}
 		}
-		public event EventHandler ptbIconClicked;
 		
 		public CustomCheckbox()
 		{
@@ -44,30 +37,42 @@ namespace CustomControls
 			ptbIcon.Image = resrouce.shuffle_inactive;
 		}
 		
-		public void IconClick(object sender, EventArgs e){
-			this.status=!this.status;
-			if(ptbIconClicked!=null){
-				ptbIconClicked(this,e);
-			}
-		}
 		
 		private void StatusChangedCallback(bool newValue)
 		{
 			//if new status if different from current status
 			if (this.status != newValue) {
 				Thread updateIconThread = new Thread(new ParameterizedThreadStart(UpdateIconCallback));
-				Thread updateColorBarThread = new Thread(new ParameterizedThreadStart(UpdateColorbarCallBack));
 				updateIconThread.Start(newValue as object);
-				updateColorBarThread.Start(newValue as object);
 			}
 		}
 		
-		private void UpdateIconCallback(object newValue){
-			
+		private async void UpdateIconCallback(object newValue)
+		{
+			this.ptbIcon.Height = 0;
+			if (this.Function == functions.Shuffle) {
+				if ((bool)newValue) {
+					this.ptbIcon.Image = resrouce.shuffle_active;
+				} else
+					this.ptbIcon.Image = resrouce.shuffle_inactive;
+			} else {
+				if ((bool)newValue) {
+					this.ptbIcon.Image = resrouce.repeat_active;
+				} else
+					this.ptbIcon.Image = resrouce.repeat_inactive;
+			}
+			for (int i = 1; i <= 16; i++){
+				this.ptbIcon.Height += 4;
+				Thread.Sleep(1);
+			}
+			MessageBox.Show(this.ptbIcon.Height.ToString());
 		}
-		
-		private void UpdateColorbarCallBack(object newValue){
-			
+		void PtbIconClick(object sender, EventArgs e)
+		{
+			this.Checked = !this.Checked;
+			if (ptbIconClick != null) {
+				ptbIconClick(this, e);
+			}
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MusicListLibrary.Models;
+using MusicListLibrary.Controllers;
 
 namespace MusicList
 {
@@ -10,10 +11,14 @@ namespace MusicList
 		public Users User {
 			get{ return this.user; }
 		}
-		
+		private UsersController userController;
+
 		public LoginForm()
 		{
 			InitializeComponent();
+			userController = new UsersController();
+			user = new Users();
+			userController.AddUser(ref user);
 		}
 		
 		void BtnRegisterClick(object sender, EventArgs e)

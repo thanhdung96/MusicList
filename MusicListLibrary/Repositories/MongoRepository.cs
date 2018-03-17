@@ -9,14 +9,16 @@ using MusicListLibrary.Models;
 
 namespace MusicListLibrary.Repositories
 {
-	internal class MongoRepository:IRepository
+	internal sealed class MongoRepository:IRepository
 	{
 		private MongoClient client;
 		private IMongoDatabase db;
+		string connString;
 		
 		public MongoRepository()
 		{
-			client = new MongoClient(ConfigurationManager.ConnectionStrings["db"].ConnectionString);
+			connString = "mongodb://client:17247914@ds036617.mlab.com:36617/anipurei";
+			client = new MongoClient(connString);
 			db = client.GetDatabase("anipurei");
 		}
 		

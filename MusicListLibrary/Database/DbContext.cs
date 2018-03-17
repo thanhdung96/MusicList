@@ -1,11 +1,10 @@
 ﻿using System;
-using MusicListLibrary.Models;
 using MusicListLibrary.Repositories;
 using System.Linq;
 
 namespace MusicListLibrary.Database
 {
-	internal class DbContext
+	internal sealed class DbContext
 	{
 		public readonly UsersRepository Users;
 		
