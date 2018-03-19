@@ -2,21 +2,20 @@
 using System.Linq;
 using System.Collections.Generic;
 using MusicListLibrary.Models;
+using System.Linq.Expressions;
 
 namespace MusicListLibrary.Repositories
 {
 	public sealed class UsersRepository
 	{
+		/*
+		 * NOTE: UserRepository has no Delete Functions
+		 */
 		private readonly MongoRepository MongoRepository;
 		
 		public UsersRepository()
 		{
 				MongoRepository = new MongoRepository();
-		}
-		
-		public List<Users> All()
-		{
-			return MongoRepository.All<Users>().ToList();
 		}
 		
 		public Users FindOne(Users user)
@@ -31,7 +30,7 @@ namespace MusicListLibrary.Repositories
 		
 		public void UpdateOne(Users user)
 		{
-			
+			MongoRepository.UpdateOne<Users>(user);
 		}
 	}
 }

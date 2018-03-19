@@ -12,17 +12,13 @@ namespace MusicList
 	{
 		private static Users session;
 
-		void customCheckbox1_ptbIconClick(object sender, EventArgs e)
-		{
-			
-		}
 		public MainForm()
 		{
 			InitializeComponent();
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
-			this.customCheckbox1.ptbIconClick +=  customCheckbox1_ptbIconClick;
+			cbxRepeat.Function = CustomCheckbox.Functions.Repeat;
 			
 			if (MainForm.session == null) {
 				LoginForm login = new LoginForm();
@@ -86,7 +82,7 @@ namespace MusicList
 		void BtnShowPlaylistsClick(object sender, EventArgs e)
 		{
 			PlaylistMnmtForm pl = new PlaylistMnmtForm();
-			pl.ShowInTaskbar=false;
+			pl.ShowInTaskbar = false;
 			pl.ShowDialog(this);
 		}
 

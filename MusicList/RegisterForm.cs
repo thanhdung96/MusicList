@@ -8,6 +8,9 @@ namespace MusicList
 {
 	public partial class RegisterForm : Form
 	{
+		/*
+		 * TODO: add validations to this form
+		 */
 		private Users user;
 		private UsersController userController;
 		
@@ -31,10 +34,13 @@ namespace MusicList
 			this.user.Password = this.txtPassword.Text;
 			this.user.Gender = Convert.ToBoolean(this.cbxGender.SelectedIndex);
 			this.user.DOB = this.dtpDOB.Value;
-			if(userController.AddUser(ref this.user))
-				CustomMessageBox.Show("Registered", "Registered", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
-			else
-				;
+			this.user.TimeStamp = DateTime.Today;
+			
+			if (userController.AddUser(ref this.user)) {
+				CustomMessageBox.Show("Your Account has been Registered.", "Yay!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
+				this.Dispose(true);
+			} else
+				CustomMessageBox.Show("Email already exist.\nPlease use a different email.", "Hold up!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Exclamation, CustomMessageBox.AnimateStyle.FadeIn);
 		}
 	}
 }

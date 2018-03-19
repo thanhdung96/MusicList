@@ -9,15 +9,24 @@ namespace CustomControls
 	public partial class CustomCheckbox : UserControl
 	{
 		public event EventHandler ptbIconClick;
-
-		public enum functions
+		public enum Functions
 		{
 			Shuffle,
 			Repeat
 		}
+
 		[Browsable(true), DefaultValue("Shuffle"), Description("Defines icon for CustomCheckbox by function")]
 		[ListBindable(true), Editor(typeof(ComboBox), typeof(UITypeEditor))]
-		public functions Function{ get; set; }
+		private Functions func;
+		public Functions Function{ 
+			get{
+				return this.func;
+			}
+			set{
+				this.func = value;
+				FunctionChangedCallback();
+			}
+		}
 		
 		private bool status;
 		public bool Checked { 
@@ -34,9 +43,13 @@ namespace CustomControls
 		{
 			InitializeComponent();
 			this.Checked = false;
-			ptbIcon.Image = resrouce.shuffle_inactive;
 		}
-		
+		private void FunctionChangedCallback(){
+			if(this.Function==Functions.Repeat)
+				this.ptbIcon.Image=resrouce.repeat_inactive;
+			else
+				this.ptbIcon.Image=resrouce.shuffle_inactive;
+		}
 		
 		private void StatusChangedCallback(bool newValue)
 		{
@@ -50,7 +63,7 @@ namespace CustomControls
 		private async void UpdateIconCallback(object newValue)
 		{
 			this.ptbIcon.Height = 0;
-			if (this.Function == functions.Shuffle) {
+			if (this.Function == Functions.Shuffle) {
 				if ((bool)newValue) {
 					this.ptbIcon.Image = resrouce.shuffle_active;
 				} else
@@ -62,10 +75,9 @@ namespace CustomControls
 					this.ptbIcon.Image = resrouce.repeat_inactive;
 			}
 			for (int i = 1; i <= 16; i++){
-				this.ptbIcon.Height += 4;
+				this.ptbIcon.Height += 2;
 				Thread.Sleep(1);
 			}
-			MessageBox.Show(this.ptbIcon.Height.ToString());
 		}
 		void PtbIconClick(object sender, EventArgs e)
 		{

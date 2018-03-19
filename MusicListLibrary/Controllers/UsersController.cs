@@ -16,7 +16,7 @@ namespace MusicListLibrary.Controllers
 		
 		public bool IsExist(Users user)
 		{
-			return repo.FindOne(user) == null;
+			return repo.FindOne(user) != null;
 		}
 		
 		public bool AddUser(ref Users user)
