@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using MusicListLibrary.Models;
 using MusicListLibrary.Controllers;
+using MusicListLibrary.Models;
+using CustomControls;
 
 namespace MusicList
 {
 	public partial class LoginForm : Form
 	{
 		private Users user;
-		public Users User {
-			get{ return this.user; }
-		}
+		public bool LoginOK{ get; set; }
 		private UsersController userController;
 
 		public LoginForm()
@@ -18,7 +17,7 @@ namespace MusicList
 			InitializeComponent();
 			userController = new UsersController();
 			user = new Users();
-			userController.AddUser(ref user);
+			this.LoginOK = false;
 		}
 		
 		void BtnRegisterClick(object sender, EventArgs e)
@@ -38,6 +37,19 @@ namespace MusicList
 		void BtnShowMouseUp(object sender, MouseEventArgs e)
 		{
 			this.txtPassword.UseSystemPasswordChar = true;
+		}
+		void BtnLoginClick(object sender, EventArgs e)
+		{
+			this.user.Email = this.txtUsername.Text;
+			this.user.Password = this.txtPassword.Text;
+			MainForm.session = userController.Login(ref this.user);
+			if (MainForm.session == null) {
+				CustomMessageBox.Show("Seems like that user doesn\'t exist. Try again", "Oops", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Warning);
+			} else {
+				this.LoginOK = true;
+				CustomMessageBox.Show("Welcome back, " + MainForm.session.Fullname, "Welcome back!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
+				this.Dispose();
+			}
 		}
 	}
 }

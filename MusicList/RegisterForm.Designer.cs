@@ -120,6 +120,7 @@ namespace MusicList
 			this.txtFullname.SelectionStart = 0;
 			this.txtFullname.Size = new System.Drawing.Size(417, 23);
 			this.txtFullname.TabIndex = 1;
+			this.txtFullname.Text = "Dung Duong";
 			this.txtFullname.UseSystemPasswordChar = false;
 			// 
 			// materialLabel2
@@ -151,6 +152,7 @@ namespace MusicList
 			this.txtEmail.SelectionStart = 0;
 			this.txtEmail.Size = new System.Drawing.Size(417, 23);
 			this.txtEmail.TabIndex = 3;
+			this.txtEmail.Text = "123@abc.com";
 			this.txtEmail.UseSystemPasswordChar = false;
 			// 
 			// materialLabel3
@@ -176,13 +178,14 @@ namespace MusicList
 			this.txtPassword.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.PasswordChar = '\0';
+			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.SelectedText = "";
 			this.txtPassword.SelectionLength = 0;
 			this.txtPassword.SelectionStart = 0;
 			this.txtPassword.Size = new System.Drawing.Size(417, 23);
 			this.txtPassword.TabIndex = 5;
-			this.txtPassword.UseSystemPasswordChar = true;
+			this.txtPassword.Text = "123";
+			this.txtPassword.UseSystemPasswordChar = false;
 			// 
 			// materialLabel4
 			// 
@@ -326,13 +329,13 @@ namespace MusicList
 			this.txtConfirm.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtConfirm.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtConfirm.Name = "txtConfirm";
-			this.txtConfirm.PasswordChar = '\0';
+			this.txtConfirm.PasswordChar = '*';
 			this.txtConfirm.SelectedText = "";
 			this.txtConfirm.SelectionLength = 0;
 			this.txtConfirm.SelectionStart = 0;
 			this.txtConfirm.Size = new System.Drawing.Size(417, 23);
 			this.txtConfirm.TabIndex = 13;
-			this.txtConfirm.UseSystemPasswordChar = true;
+			this.txtConfirm.UseSystemPasswordChar = false;
 			// 
 			// RegisterForm
 			// 

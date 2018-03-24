@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using MongoDB.Bson;
 
 namespace MusicListLibrary.Models
@@ -18,6 +19,18 @@ namespace MusicListLibrary.Models
 		{
 			this.DOB = DateTime.Today;
 			this.Disabled = false;
+		}
+		
+		public Users(Users user)
+		{
+			this.Id = user.Id;
+			this.Fullname = user.Fullname;
+			this.Email = user.Email;
+			this.Password = user.Password;
+			this.Gender = user.Gender;
+			this.DOB = user.DOB;
+			this.Disabled = user.Disabled;
+			this.TimeStamp = user.TimeStamp;
 		}
 	}
 }

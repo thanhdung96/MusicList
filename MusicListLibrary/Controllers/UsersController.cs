@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Linq;
 using MusicListLibrary.Models;
 using MusicListLibrary.Repositories;
-using System.Linq;
+using System.Windows.Forms;
 
 namespace MusicListLibrary.Controllers
 {
@@ -11,18 +12,24 @@ namespace MusicListLibrary.Controllers
 		
 		public UsersController()
 		{
-				repo = new UsersRepository();
+			repo = new UsersRepository();
 		}
 		
 		public bool IsExist(Users user)
 		{
-			return repo.FindOne(user) != null;
+			Users find = new Users(user);
+			find.Password = null;
+			return repo.FindOne(find) != null;
+		}
+		
+		public Users Login(ref Users user){
+			return repo.FindOne(user);
 		}
 		
 		public bool AddUser(ref Users user)
 		{
 			if (!this.IsExist(user)) {
-				repo.AddOne(user);
+				repo.AddOne(ref user);
 				return true;
 			}
 			return false;
@@ -31,7 +38,7 @@ namespace MusicListLibrary.Controllers
 		public bool UpdateUser(ref Users user)
 		{
 			if (!this.IsExist(user)) {
-				repo.UpdateOne(user);
+				repo.UpdateOne(ref user);
 				return true;
 			}
 			return false;

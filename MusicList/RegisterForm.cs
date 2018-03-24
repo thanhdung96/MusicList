@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using MusicListLibrary.Models;
-using MusicListLibrary.Controllers;
 using CustomControls;
+using MusicListLibrary.Controllers;
+using MusicListLibrary.Models;
 
 namespace MusicList
 {
@@ -32,15 +32,16 @@ namespace MusicList
 			this.user.Email = this.txtEmail.Text;
 			this.user.Fullname = this.txtFullname.Text;
 			this.user.Password = this.txtPassword.Text;
-			this.user.Gender = Convert.ToBoolean(this.cbxGender.SelectedIndex);
+			this.user.Gender = (this.cbxGender.SelectedIndex == 1);
 			this.user.DOB = this.dtpDOB.Value;
 			this.user.TimeStamp = DateTime.Today;
 			
 			if (userController.AddUser(ref this.user)) {
 				CustomMessageBox.Show("Your Account has been Registered.", "Yay!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
 				this.Dispose(true);
-			} else
+			} else{
 				CustomMessageBox.Show("Email already exist.\nPlease use a different email.", "Hold up!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Exclamation, CustomMessageBox.AnimateStyle.FadeIn);
+			}
 		}
 	}
 }

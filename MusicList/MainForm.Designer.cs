@@ -228,9 +228,9 @@ namespace MusicList
 			// 
 			// pnlMusicItemsList
 			// 
+			this.pnlMusicItemsList.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.pnlMusicItemsList.AutoScroll = true;
 			this.tableLayoutPanel6.SetColumnSpan(this.pnlMusicItemsList, 2);
-			this.pnlMusicItemsList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlMusicItemsList.Location = new System.Drawing.Point(0, 29);
 			this.pnlMusicItemsList.Margin = new System.Windows.Forms.Padding(0);
 			this.pnlMusicItemsList.Name = "pnlMusicItemsList";
@@ -455,7 +455,7 @@ namespace MusicList
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.94867F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.05134F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel1, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel2, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.materialSingleLineTextField1, 2, 1);
@@ -486,7 +486,7 @@ namespace MusicList
 			this.materialLabel1.Location = new System.Drawing.Point(23, 30);
 			this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel1.Name = "materialLabel1";
-			this.materialLabel1.Size = new System.Drawing.Size(226, 60);
+			this.materialLabel1.Size = new System.Drawing.Size(225, 60);
 			this.materialLabel1.TabIndex = 0;
 			this.materialLabel1.Text = "Fullname:";
 			this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -500,7 +500,7 @@ namespace MusicList
 			this.materialLabel2.Location = new System.Drawing.Point(23, 90);
 			this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel2.Name = "materialLabel2";
-			this.materialLabel2.Size = new System.Drawing.Size(226, 60);
+			this.materialLabel2.Size = new System.Drawing.Size(225, 60);
 			this.materialLabel2.TabIndex = 1;
 			this.materialLabel2.Text = "Email:";
 			this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -510,7 +510,7 @@ namespace MusicList
 			this.materialSingleLineTextField1.Depth = 0;
 			this.materialSingleLineTextField1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialSingleLineTextField1.Hint = "Fullname";
-			this.materialSingleLineTextField1.Location = new System.Drawing.Point(255, 50);
+			this.materialSingleLineTextField1.Location = new System.Drawing.Point(254, 50);
 			this.materialSingleLineTextField1.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
 			this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
@@ -527,7 +527,7 @@ namespace MusicList
 			this.materialSingleLineTextField2.Depth = 0;
 			this.materialSingleLineTextField2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialSingleLineTextField2.Hint = "Email";
-			this.materialSingleLineTextField2.Location = new System.Drawing.Point(255, 110);
+			this.materialSingleLineTextField2.Location = new System.Drawing.Point(254, 110);
 			this.materialSingleLineTextField2.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
 			this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
@@ -548,7 +548,7 @@ namespace MusicList
 			this.materialLabel3.Location = new System.Drawing.Point(23, 150);
 			this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel3.Name = "materialLabel3";
-			this.materialLabel3.Size = new System.Drawing.Size(226, 60);
+			this.materialLabel3.Size = new System.Drawing.Size(225, 60);
 			this.materialLabel3.TabIndex = 4;
 			this.materialLabel3.Text = "New Password:";
 			this.materialLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -558,7 +558,7 @@ namespace MusicList
 			this.materialSingleLineTextField3.Depth = 0;
 			this.materialSingleLineTextField3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialSingleLineTextField3.Hint = "Change to new password";
-			this.materialSingleLineTextField3.Location = new System.Drawing.Point(255, 170);
+			this.materialSingleLineTextField3.Location = new System.Drawing.Point(254, 170);
 			this.materialSingleLineTextField3.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
 			this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
@@ -578,7 +578,7 @@ namespace MusicList
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.22067F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.41638F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.406F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel4, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.lblGender, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel6, 2, 0);
@@ -588,7 +588,7 @@ namespace MusicList
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(923, 78);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(922, 78);
 			this.tableLayoutPanel2.TabIndex = 6;
 			// 
 			// materialLabel4
@@ -614,7 +614,7 @@ namespace MusicList
 			this.lblGender.Location = new System.Drawing.Point(204, 0);
 			this.lblGender.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lblGender.Name = "lblGender";
-			this.lblGender.Size = new System.Drawing.Size(68, 78);
+			this.lblGender.Size = new System.Drawing.Size(67, 78);
 			this.lblGender.TabIndex = 1;
 			this.lblGender.Text = "Male";
 			this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -625,10 +625,10 @@ namespace MusicList
 			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel6.Location = new System.Drawing.Point(278, 0);
+			this.materialLabel6.Location = new System.Drawing.Point(277, 0);
 			this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel6.Name = "materialLabel6";
-			this.materialLabel6.Size = new System.Drawing.Size(120, 78);
+			this.materialLabel6.Size = new System.Drawing.Size(119, 78);
 			this.materialLabel6.TabIndex = 2;
 			this.materialLabel6.Text = "Day of Birth:";
 			this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -638,11 +638,11 @@ namespace MusicList
 			this.metroDateTime1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.metroDateTime1.Enabled = false;
 			this.metroDateTime1.FontWeight = MetroFramework.MetroDateTimeWeight.Bold;
-			this.metroDateTime1.Location = new System.Drawing.Point(404, 23);
+			this.metroDateTime1.Location = new System.Drawing.Point(402, 23);
 			this.metroDateTime1.Margin = new System.Windows.Forms.Padding(3, 23, 100, 3);
 			this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
 			this.metroDateTime1.Name = "metroDateTime1";
-			this.metroDateTime1.Size = new System.Drawing.Size(218, 29);
+			this.metroDateTime1.Size = new System.Drawing.Size(217, 29);
 			this.metroDateTime1.TabIndex = 3;
 			// 
 			// flowLayoutPanel1
@@ -650,7 +650,7 @@ namespace MusicList
 			this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.flowLayoutPanel1.Controls.Add(this.bunifuThinButton21);
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(252, 294);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(251, 294);
 			this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -726,7 +726,7 @@ namespace MusicList
 			// 
 			// lblFullname
 			// 
-			this.lblFullname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblFullname.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.lblFullname.BackColor = System.Drawing.Color.Transparent;
 			this.lblFullname.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblFullname.ForeColor = System.Drawing.Color.White;

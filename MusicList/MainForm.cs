@@ -10,7 +10,7 @@ namespace MusicList
 {
 	public partial class MainForm : MaterialForm
 	{
-		private static Users session;
+		public static Users session;
 
 		public MainForm()
 		{
@@ -18,15 +18,19 @@ namespace MusicList
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
-			cbxRepeat.Function = CustomCheckbox.Functions.Repeat;
 			
-			if (MainForm.session == null) {
-				LoginForm login = new LoginForm();
-				login.ShowInTaskbar = false;
-				login.ShowDialog(this);
+			LoginForm login = new LoginForm();
+			login.ShowInTaskbar = false;
+			login.ShowDialog(this);
+			if (!login.LoginOK)
+				this.Dispose(true);
+			else {
+				Thread t = new Thread(new ThreadStart(LblFullNameChangeLoginOK));
+				t.Start();
 			}
 		}
 
+		#region Events
 		void tcMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int tabindex = this.tcMainTabControl.SelectedIndex;
@@ -100,9 +104,10 @@ namespace MusicList
 				t.Start(true as object);
 			}
 		}
+		#endregion Events
 		
 		#region Threading
-		private void EditLableText(object tabindex)
+		private async void EditLableText(object tabindex)
 		{
 			int index = (int)tabindex;
 			this.lblTabName.Width = 0;
@@ -134,6 +139,15 @@ namespace MusicList
 		{
 			Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
 			t.Start(false as object);
+		}
+		async void LblFullNameChangeLoginOK()
+		{
+			this.lblFullname.Width = 0;
+			this.lblFullname.Text = MainForm.session.Fullname.ToString();
+			for(int i=0;i<60;i++){
+				this.lblFullname.Width+=4;
+				Thread.Sleep(3);
+			}
 		}
 		#endregion Threading
 	}

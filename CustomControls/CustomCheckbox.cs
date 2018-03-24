@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Drawing.Design;
-using System.Windows.Forms;
 using System.ComponentModel;
+using System.Drawing.Design;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace CustomControls
 {
@@ -45,13 +45,10 @@ namespace CustomControls
 			this.Checked = false;
 		}
 		private void FunctionChangedCallback(){
-			if(this.Function==Functions.Repeat)
-				this.ptbIcon.Image=resrouce.repeat_inactive;
-			else
-				this.ptbIcon.Image=resrouce.shuffle_inactive;
+			this.ptbIcon.Image = this.Function == Functions.Repeat ? resrouce.repeat_inactive : resrouce.shuffle_inactive;
 		}
 		
-		private void StatusChangedCallback(bool newValue)
+		void StatusChangedCallback(bool newValue)
 		{
 			//if new status if different from current status
 			if (this.status != newValue) {
@@ -60,7 +57,7 @@ namespace CustomControls
 			}
 		}
 		
-		private async void UpdateIconCallback(object newValue)
+		async void UpdateIconCallback(object newValue)
 		{
 			this.ptbIcon.Height = 0;
 			if (this.Function == Functions.Shuffle) {
@@ -74,6 +71,7 @@ namespace CustomControls
 				} else
 					this.ptbIcon.Image = resrouce.repeat_inactive;
 			}
+			Thread.Sleep(100);
 			for (int i = 1; i <= 16; i++){
 				this.ptbIcon.Height += 2;
 				Thread.Sleep(1);

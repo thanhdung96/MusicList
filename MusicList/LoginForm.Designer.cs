@@ -129,6 +129,7 @@ namespace MusicList
 			this.txtUsername.SelectionStart = 0;
 			this.txtUsername.Size = new System.Drawing.Size(369, 23);
 			this.txtUsername.TabIndex = 1;
+			this.txtUsername.Text = "123@abc.com";
 			this.txtUsername.UseSystemPasswordChar = false;
 			// 
 			// tableLayoutPanel2
@@ -152,16 +153,16 @@ namespace MusicList
 			this.txtPassword.Depth = 0;
 			this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtPassword.Hint = "";
-			this.txtPassword.Location = new System.Drawing.Point(0, 0);
-			this.txtPassword.Margin = new System.Windows.Forms.Padding(0);
+			this.txtPassword.Location = new System.Drawing.Point(3, 3);
 			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = '\0';
 			this.txtPassword.SelectedText = "";
 			this.txtPassword.SelectionLength = 0;
 			this.txtPassword.SelectionStart = 0;
-			this.txtPassword.Size = new System.Drawing.Size(285, 23);
+			this.txtPassword.Size = new System.Drawing.Size(279, 23);
 			this.txtPassword.TabIndex = 0;
+			this.txtPassword.Text = "123";
 			this.txtPassword.UseSystemPasswordChar = true;
 			// 
 			// btnShow
@@ -243,6 +244,7 @@ namespace MusicList
 			this.btnLogin.TabIndex = 2;
 			this.btnLogin.Text = "Login";
 			this.btnLogin.UseVisualStyleBackColor = true;
+			this.btnLogin.Click += new System.EventHandler(this.BtnLoginClick);
 			// 
 			// LoginForm
 			// 

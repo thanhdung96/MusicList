@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using MusicListLibrary.Models;
-using System.Linq.Expressions;
 
 namespace MusicListLibrary.Repositories
 {
@@ -15,20 +13,23 @@ namespace MusicListLibrary.Repositories
 		
 		public UsersRepository()
 		{
-				MongoRepository = new MongoRepository();
+			MongoRepository = new MongoRepository();
 		}
 		
 		public Users FindOne(Users user)
 		{
-			return MongoRepository.FindOne<Users>(u => u.Email == user.Email);
+			if(user.Password!=null)
+				return MongoRepository.FindOne<Users>(u => u.Email == user.Email && u.Password == user.Password);
+			else
+				return MongoRepository.FindOne<Users>(u => u.Email == user.Email);
 		}
 		
-		public void AddOne(Users user)
+		public void AddOne(ref Users user)
 		{
 			MongoRepository.AddOne<Users>(user);
 		}
 		
-		public void UpdateOne(Users user)
+		public void UpdateOne(ref Users user)
 		{
 			MongoRepository.UpdateOne<Users>(user);
 		}
