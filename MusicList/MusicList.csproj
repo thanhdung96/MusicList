@@ -96,6 +96,8 @@
     <None Include="app.config" />
     <None Include="Bunifu_UI_v1.52.dll" />
     <None Include="MaterialSkin.dll" />
+    <None Include="Resource\cancel.ico" />
+    <None Include="Resource\cancel.png" />
     <None Include="Resource\searching-magnifying-glass.png" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,10 @@
 ﻿using System;
-using MaterialSkin.Controls;
-using MaterialSkin;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using CustomControls;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using MusicListLibrary.Models;
 
 namespace MusicList
@@ -18,7 +19,21 @@ namespace MusicList
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
-			
+		}
+
+		#region Functions
+		private void UpdateInfoLogin()
+		{
+			this.txtFullName.Text = MainForm.session.Fullname.ToString();
+			this.txtEmail.Text = MainForm.session.Email.ToString();
+			this.lblGender.Text = MainForm.session.Gender.ToBoolean() ? "Male" : "Female";
+			this.dtpDOB.Value = MainForm.session.DOB.ToLocalTime();
+		}
+		#endregion Functions
+		
+		#region Events
+		void MainFormShown(object sender, EventArgs e)
+		{
 			LoginForm login = new LoginForm();
 			login.ShowInTaskbar = false;
 			login.ShowDialog(this);
@@ -27,10 +42,10 @@ namespace MusicList
 			else {
 				Thread t = new Thread(new ThreadStart(LblFullNameChangeLoginOK));
 				t.Start();
+				UpdateInfoLogin();
 			}
 		}
 
-		#region Events
 		void tcMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int tabindex = this.tcMainTabControl.SelectedIndex;
@@ -83,6 +98,11 @@ namespace MusicList
 			CustomMessageBox.Show("Id: " + custom.Id.ToString(), custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
 		}
 		
+		void BtnUpdateInfoClick(object sender, EventArgs e)
+		{
+	
+		}
+		
 		void BtnShowPlaylistsClick(object sender, EventArgs e)
 		{
 			PlaylistMnmtForm pl = new PlaylistMnmtForm();
@@ -107,7 +127,7 @@ namespace MusicList
 		#endregion Events
 		
 		#region Threading
-		private async void EditLableText(object tabindex)
+		private void EditLableText(object tabindex)
 		{
 			int index = (int)tabindex;
 			this.lblTabName.Width = 0;
@@ -140,13 +160,12 @@ namespace MusicList
 			Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
 			t.Start(false as object);
 		}
-		async void LblFullNameChangeLoginOK()
+		void LblFullNameChangeLoginOK()
 		{
-			this.lblFullname.Width = 0;
 			this.lblFullname.Text = MainForm.session.Fullname.ToString();
-			for(int i=0;i<60;i++){
-				this.lblFullname.Width+=4;
-				Thread.Sleep(3);
+			for (int i = 0; i < 255; i += 5) {
+				this.lblFullname.ForeColor = Color.FromArgb(i, Color.White);
+				Thread.Sleep(2);
 			}
 		}
 		#endregion Threading

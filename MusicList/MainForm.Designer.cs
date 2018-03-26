@@ -6,6 +6,13 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
+using System.Windows.Forms;
+using System.ComponentModel;
+using MaterialSkin.Controls;
+using MetroFramework.Controls;
+using Bunifu.Framework.UI;
+using CustomControls;
+
 namespace MusicList
 {
 	partial class MainForm
@@ -13,48 +20,48 @@ namespace MusicList
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
-		private System.ComponentModel.IContainer components = null;
-		private MaterialSkin.Controls.MaterialTabControl tcMainTabControl;
-		private System.Windows.Forms.TabPage tabpage1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private MaterialSkin.Controls.MaterialTabSelector tsMainTab;
-		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.TabPage tabPage5;
-		private System.Windows.Forms.Label lblTabName;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Label lblFullname;
-		private MaterialSkin.Controls.MaterialLabel materialLabel1;
-		private MaterialSkin.Controls.MaterialLabel materialLabel2;
-		private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
-		private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
-		private MaterialSkin.Controls.MaterialLabel materialLabel3;
-		private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private MaterialSkin.Controls.MaterialLabel materialLabel4;
-		private MaterialSkin.Controls.MaterialLabel lblGender;
-		private MaterialSkin.Controls.MaterialLabel materialLabel6;
-		private MetroFramework.Controls.MetroDateTime metroDateTime1;
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-		private System.Windows.Forms.Panel pnlMusicVisual;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-		private System.Windows.Forms.Label pnlPlaylistName;
-		private MaterialSkin.Controls.MaterialFlatButton btnShowPlaylists;
-		private System.Windows.Forms.Panel pnlPlaylistContent;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-		private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
-		private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton3;
-		private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
-		private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-		private MaterialSkin.Controls.MaterialLabel lblFind;
-		private MaterialSkin.Controls.MaterialSingleLineTextField txtFind;
-		private System.Windows.Forms.Panel pnlMusicItemsList;
-		private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
-		private CustomControls.CustomCheckbox cbxShuffle;
-		private CustomControls.CustomCheckbox cbxRepeat;
+		private IContainer components = null;
+		private MaterialTabControl tcMainTabControl;
+		private TabPage tabpage1;
+		private TabPage tabPage2;
+		private MaterialTabSelector tsMainTab;
+		private TabPage tabPage3;
+		private TabPage tabPage4;
+		private TabPage tabPage5;
+		private volatile Label lblTabName;
+		private TableLayoutPanel tableLayoutPanel1;
+		private Label lblFullname;
+		private MaterialLabel materialLabel1;
+		private MaterialLabel materialLabel2;
+		private MaterialSingleLineTextField txtFullName;
+		private MaterialSingleLineTextField txtEmail;
+		private MaterialLabel materialLabel3;
+		private MaterialSingleLineTextField txtPassword;
+		private TableLayoutPanel tableLayoutPanel2;
+		private MaterialLabel materialLabel4;
+		private MaterialLabel lblGender;
+		private MaterialLabel materialLabel6;
+		private MetroDateTime dtpDOB;
+		private FlowLayoutPanel flowLayoutPanel1;
+		private TableLayoutPanel tableLayoutPanel3;
+		private Panel pnlMusicVisual;
+		private TableLayoutPanel tableLayoutPanel4;
+		private Label pnlPlaylistName;
+		private MaterialFlatButton btnShowPlaylists;
+		private Panel pnlPlaylistContent;
+		private TableLayoutPanel tableLayoutPanel5;
+		private MaterialRaisedButton materialRaisedButton2;
+		private MaterialRaisedButton materialRaisedButton3;
+		private MaterialRaisedButton materialRaisedButton4;
+		private MetroTrackBar metroTrackBar1;
+		private TableLayoutPanel tableLayoutPanel6;
+		private TableLayoutPanel tableLayoutPanel7;
+		private MaterialLabel lblFind;
+		private MaterialSingleLineTextField txtFind;
+		private Panel pnlMusicItemsList;
+		private BunifuThinButton2 btnUpdateInfo;
+		private CustomCheckbox cbxShuffle;
+		private CustomCheckbox cbxRepeat;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -103,17 +110,17 @@ namespace MusicList
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
 			this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-			this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txtFullName = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-			this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.txtPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
 			this.lblGender = new MaterialSkin.Controls.MaterialLabel();
 			this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-			this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+			this.dtpDOB = new MetroFramework.Controls.MetroDateTime();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
+			this.btnUpdateInfo = new Bunifu.Framework.UI.BunifuThinButton2();
 			this.tsMainTab = new MaterialSkin.Controls.MaterialTabSelector();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -455,13 +462,13 @@ namespace MusicList
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.94867F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.05134F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel1, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel2, 1, 2);
-			this.tableLayoutPanel1.Controls.Add(this.materialSingleLineTextField1, 2, 1);
-			this.tableLayoutPanel1.Controls.Add(this.materialSingleLineTextField2, 2, 2);
+			this.tableLayoutPanel1.Controls.Add(this.txtFullName, 2, 1);
+			this.tableLayoutPanel1.Controls.Add(this.txtEmail, 2, 2);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel3, 1, 3);
-			this.tableLayoutPanel1.Controls.Add(this.materialSingleLineTextField3, 2, 3);
+			this.tableLayoutPanel1.Controls.Add(this.txtPassword, 2, 3);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 5);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -486,7 +493,7 @@ namespace MusicList
 			this.materialLabel1.Location = new System.Drawing.Point(23, 30);
 			this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel1.Name = "materialLabel1";
-			this.materialLabel1.Size = new System.Drawing.Size(225, 60);
+			this.materialLabel1.Size = new System.Drawing.Size(224, 60);
 			this.materialLabel1.TabIndex = 0;
 			this.materialLabel1.Text = "Fullname:";
 			this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -500,44 +507,44 @@ namespace MusicList
 			this.materialLabel2.Location = new System.Drawing.Point(23, 90);
 			this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel2.Name = "materialLabel2";
-			this.materialLabel2.Size = new System.Drawing.Size(225, 60);
+			this.materialLabel2.Size = new System.Drawing.Size(224, 60);
 			this.materialLabel2.TabIndex = 1;
 			this.materialLabel2.Text = "Email:";
 			this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// materialSingleLineTextField1
+			// txtFullName
 			// 
-			this.materialSingleLineTextField1.Depth = 0;
-			this.materialSingleLineTextField1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.materialSingleLineTextField1.Hint = "Fullname";
-			this.materialSingleLineTextField1.Location = new System.Drawing.Point(254, 50);
-			this.materialSingleLineTextField1.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
-			this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-			this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-			this.materialSingleLineTextField1.PasswordChar = '\0';
-			this.materialSingleLineTextField1.SelectedText = "";
-			this.materialSingleLineTextField1.SelectionLength = 0;
-			this.materialSingleLineTextField1.SelectionStart = 0;
-			this.materialSingleLineTextField1.Size = new System.Drawing.Size(494, 23);
-			this.materialSingleLineTextField1.TabIndex = 2;
-			this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+			this.txtFullName.Depth = 0;
+			this.txtFullName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtFullName.Hint = "Fullname";
+			this.txtFullName.Location = new System.Drawing.Point(253, 50);
+			this.txtFullName.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
+			this.txtFullName.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txtFullName.Name = "txtFullName";
+			this.txtFullName.PasswordChar = '\0';
+			this.txtFullName.SelectedText = "";
+			this.txtFullName.SelectionLength = 0;
+			this.txtFullName.SelectionStart = 0;
+			this.txtFullName.Size = new System.Drawing.Size(489, 23);
+			this.txtFullName.TabIndex = 2;
+			this.txtFullName.UseSystemPasswordChar = false;
 			// 
-			// materialSingleLineTextField2
+			// txtEmail
 			// 
-			this.materialSingleLineTextField2.Depth = 0;
-			this.materialSingleLineTextField2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.materialSingleLineTextField2.Hint = "Email";
-			this.materialSingleLineTextField2.Location = new System.Drawing.Point(254, 110);
-			this.materialSingleLineTextField2.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
-			this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-			this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-			this.materialSingleLineTextField2.PasswordChar = '\0';
-			this.materialSingleLineTextField2.SelectedText = "";
-			this.materialSingleLineTextField2.SelectionLength = 0;
-			this.materialSingleLineTextField2.SelectionStart = 0;
-			this.materialSingleLineTextField2.Size = new System.Drawing.Size(494, 23);
-			this.materialSingleLineTextField2.TabIndex = 3;
-			this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+			this.txtEmail.Depth = 0;
+			this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtEmail.Hint = "Email";
+			this.txtEmail.Location = new System.Drawing.Point(253, 110);
+			this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
+			this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txtEmail.Name = "txtEmail";
+			this.txtEmail.PasswordChar = '\0';
+			this.txtEmail.SelectedText = "";
+			this.txtEmail.SelectionLength = 0;
+			this.txtEmail.SelectionStart = 0;
+			this.txtEmail.Size = new System.Drawing.Size(489, 23);
+			this.txtEmail.TabIndex = 3;
+			this.txtEmail.UseSystemPasswordChar = false;
 			// 
 			// materialLabel3
 			// 
@@ -548,27 +555,27 @@ namespace MusicList
 			this.materialLabel3.Location = new System.Drawing.Point(23, 150);
 			this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel3.Name = "materialLabel3";
-			this.materialLabel3.Size = new System.Drawing.Size(225, 60);
+			this.materialLabel3.Size = new System.Drawing.Size(224, 60);
 			this.materialLabel3.TabIndex = 4;
 			this.materialLabel3.Text = "New Password:";
 			this.materialLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// materialSingleLineTextField3
+			// txtPassword
 			// 
-			this.materialSingleLineTextField3.Depth = 0;
-			this.materialSingleLineTextField3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.materialSingleLineTextField3.Hint = "Change to new password";
-			this.materialSingleLineTextField3.Location = new System.Drawing.Point(254, 170);
-			this.materialSingleLineTextField3.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
-			this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
-			this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
-			this.materialSingleLineTextField3.PasswordChar = '\0';
-			this.materialSingleLineTextField3.SelectedText = "";
-			this.materialSingleLineTextField3.SelectionLength = 0;
-			this.materialSingleLineTextField3.SelectionStart = 0;
-			this.materialSingleLineTextField3.Size = new System.Drawing.Size(494, 23);
-			this.materialSingleLineTextField3.TabIndex = 5;
-			this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+			this.txtPassword.Depth = 0;
+			this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtPassword.Hint = "Change to new password";
+			this.txtPassword.Location = new System.Drawing.Point(253, 170);
+			this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 20, 200, 3);
+			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
+			this.txtPassword.Name = "txtPassword";
+			this.txtPassword.PasswordChar = '\0';
+			this.txtPassword.SelectedText = "";
+			this.txtPassword.SelectionLength = 0;
+			this.txtPassword.SelectionStart = 0;
+			this.txtPassword.Size = new System.Drawing.Size(489, 23);
+			this.txtPassword.TabIndex = 5;
+			this.txtPassword.UseSystemPasswordChar = true;
 			// 
 			// tableLayoutPanel2
 			// 
@@ -578,17 +585,17 @@ namespace MusicList
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.22067F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.41638F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.406F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel4, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.lblGender, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel6, 2, 0);
-			this.tableLayoutPanel2.Controls.Add(this.metroDateTime1, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.dtpDOB, 3, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(23, 213);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(922, 78);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(916, 78);
 			this.tableLayoutPanel2.TabIndex = 6;
 			// 
 			// materialLabel4
@@ -600,7 +607,7 @@ namespace MusicList
 			this.materialLabel4.Location = new System.Drawing.Point(3, 0);
 			this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel4.Name = "materialLabel4";
-			this.materialLabel4.Size = new System.Drawing.Size(195, 78);
+			this.materialLabel4.Size = new System.Drawing.Size(190, 78);
 			this.materialLabel4.TabIndex = 0;
 			this.materialLabel4.Text = "Gender:";
 			this.materialLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -611,10 +618,10 @@ namespace MusicList
 			this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lblGender.Font = new System.Drawing.Font("Roboto", 11F);
 			this.lblGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lblGender.Location = new System.Drawing.Point(204, 0);
+			this.lblGender.Location = new System.Drawing.Point(199, 0);
 			this.lblGender.MouseState = MaterialSkin.MouseState.HOVER;
 			this.lblGender.Name = "lblGender";
-			this.lblGender.Size = new System.Drawing.Size(67, 78);
+			this.lblGender.Size = new System.Drawing.Size(65, 78);
 			this.lblGender.TabIndex = 1;
 			this.lblGender.Text = "Male";
 			this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -625,62 +632,63 @@ namespace MusicList
 			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel6.Location = new System.Drawing.Point(277, 0);
+			this.materialLabel6.Location = new System.Drawing.Point(270, 0);
 			this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel6.Name = "materialLabel6";
-			this.materialLabel6.Size = new System.Drawing.Size(119, 78);
+			this.materialLabel6.Size = new System.Drawing.Size(116, 78);
 			this.materialLabel6.TabIndex = 2;
 			this.materialLabel6.Text = "Day of Birth:";
 			this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// metroDateTime1
+			// dtpDOB
 			// 
-			this.metroDateTime1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.metroDateTime1.Enabled = false;
-			this.metroDateTime1.FontWeight = MetroFramework.MetroDateTimeWeight.Bold;
-			this.metroDateTime1.Location = new System.Drawing.Point(402, 23);
-			this.metroDateTime1.Margin = new System.Windows.Forms.Padding(3, 23, 100, 3);
-			this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
-			this.metroDateTime1.Name = "metroDateTime1";
-			this.metroDateTime1.Size = new System.Drawing.Size(217, 29);
-			this.metroDateTime1.TabIndex = 3;
+			this.dtpDOB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dtpDOB.Enabled = false;
+			this.dtpDOB.FontWeight = MetroFramework.MetroDateTimeWeight.Bold;
+			this.dtpDOB.Location = new System.Drawing.Point(392, 23);
+			this.dtpDOB.Margin = new System.Windows.Forms.Padding(3, 23, 100, 3);
+			this.dtpDOB.MinimumSize = new System.Drawing.Size(4, 29);
+			this.dtpDOB.Name = "dtpDOB";
+			this.dtpDOB.Size = new System.Drawing.Size(209, 29);
+			this.dtpDOB.TabIndex = 3;
 			// 
 			// flowLayoutPanel1
 			// 
 			this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.flowLayoutPanel1.Controls.Add(this.bunifuThinButton21);
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(251, 294);
+			this.flowLayoutPanel1.Controls.Add(this.btnUpdateInfo);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(250, 294);
 			this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(697, 66);
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(692, 66);
 			this.flowLayoutPanel1.TabIndex = 7;
 			// 
-			// bunifuThinButton21
+			// btnUpdateInfo
 			// 
-			this.bunifuThinButton21.ActiveBorderThickness = 1;
-			this.bunifuThinButton21.ActiveCornerRadius = 20;
-			this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
-			this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
-			this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
-			this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
-			this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
-			this.bunifuThinButton21.ButtonText = "Update Info";
-			this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.bunifuThinButton21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuThinButton21.ForeColor = System.Drawing.Color.SteelBlue;
-			this.bunifuThinButton21.IdleBorderThickness = 1;
-			this.bunifuThinButton21.IdleCornerRadius = 20;
-			this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
-			this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
-			this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
-			this.bunifuThinButton21.Location = new System.Drawing.Point(490, 5);
-			this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-			this.bunifuThinButton21.Name = "bunifuThinButton21";
-			this.bunifuThinButton21.Size = new System.Drawing.Size(201, 39);
-			this.bunifuThinButton21.TabIndex = 0;
-			this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.btnUpdateInfo.ActiveBorderThickness = 1;
+			this.btnUpdateInfo.ActiveCornerRadius = 20;
+			this.btnUpdateInfo.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
+			this.btnUpdateInfo.ActiveForecolor = System.Drawing.Color.White;
+			this.btnUpdateInfo.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
+			this.btnUpdateInfo.BackColor = System.Drawing.Color.White;
+			this.btnUpdateInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateInfo.BackgroundImage")));
+			this.btnUpdateInfo.ButtonText = "Update Info";
+			this.btnUpdateInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnUpdateInfo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnUpdateInfo.ForeColor = System.Drawing.Color.SteelBlue;
+			this.btnUpdateInfo.IdleBorderThickness = 1;
+			this.btnUpdateInfo.IdleCornerRadius = 20;
+			this.btnUpdateInfo.IdleFillColor = System.Drawing.Color.White;
+			this.btnUpdateInfo.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
+			this.btnUpdateInfo.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(77)))));
+			this.btnUpdateInfo.Location = new System.Drawing.Point(485, 5);
+			this.btnUpdateInfo.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+			this.btnUpdateInfo.Name = "btnUpdateInfo";
+			this.btnUpdateInfo.Size = new System.Drawing.Size(201, 39);
+			this.btnUpdateInfo.TabIndex = 0;
+			this.btnUpdateInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.btnUpdateInfo.Click += new System.EventHandler(this.BtnUpdateInfoClick);
 			// 
 			// tsMainTab
 			// 
@@ -729,12 +737,11 @@ namespace MusicList
 			this.lblFullname.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.lblFullname.BackColor = System.Drawing.Color.Transparent;
 			this.lblFullname.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblFullname.ForeColor = System.Drawing.Color.White;
+			this.lblFullname.ForeColor = System.Drawing.Color.Transparent;
 			this.lblFullname.Location = new System.Drawing.Point(790, 25);
 			this.lblFullname.Name = "lblFullname";
 			this.lblFullname.Size = new System.Drawing.Size(240, 37);
 			this.lblFullname.TabIndex = 3;
-			this.lblFullname.Text = "[Fullname]";
 			this.lblFullname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// MainForm
@@ -747,8 +754,9 @@ namespace MusicList
 			this.Controls.Add(this.lblTabName);
 			this.Controls.Add(this.tsMainTab);
 			this.Name = "MainForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MusicList";
+			this.Shown += new System.EventHandler(this.MainFormShown);
 			this.tcMainTabControl.ResumeLayout(false);
 			this.tabpage1.ResumeLayout(false);
 			this.tableLayoutPanel6.ResumeLayout(false);

@@ -6,6 +6,10 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
+using System.ComponentModel;
+using System.Windows.Forms;
+using MetroFramework.Controls;
+
 namespace MusicList
 {
 	using MaterialSkin.Controls;
@@ -14,8 +18,8 @@ namespace MusicList
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
-		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private IContainer components = null;
+		private TableLayoutPanel tableLayoutPanel1;
 		private MaterialLabel materialLabel1;
 		private MaterialSingleLineTextField txtFullname;
 		private MaterialLabel materialLabel2;
@@ -25,12 +29,13 @@ namespace MusicList
 		private MaterialLabel materialLabel4;
 		private MaterialRaisedButton btnRegister;
 		private MaterialFlatButton btnCancel;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private TableLayoutPanel tableLayoutPanel2;
 		private MaterialLabel materialLabel5;
 		private MaterialLabel materialLabel6;
-		private MetroFramework.Controls.MetroDateTime dtpDOB;
-		private MetroFramework.Controls.MetroComboBox cbxGender;
+		private MetroDateTime dtpDOB;
+		private MetroComboBox cbxGender;
 		private MaterialSingleLineTextField txtConfirm;
+		private System.Windows.Forms.ErrorProvider ErrorPrivider;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -53,6 +58,7 @@ namespace MusicList
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.txtFullname = new MaterialSkin.Controls.MaterialSingleLineTextField();
 			this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -67,18 +73,21 @@ namespace MusicList
 			this.cbxGender = new MetroFramework.Controls.MetroComboBox();
 			this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
 			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-			this.btnRegister = new MaterialSkin.Controls.MaterialRaisedButton();
 			this.txtConfirm = new MaterialSkin.Controls.MaterialSingleLineTextField();
+			this.btnRegister = new MaterialSkin.Controls.MaterialRaisedButton();
+			this.ErrorPrivider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ErrorPrivider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
 			this.tableLayoutPanel1.Controls.Add(this.txtFullname, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel2, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 1);
@@ -88,8 +97,8 @@ namespace MusicList
 			this.tableLayoutPanel1.Controls.Add(this.btnCancel, 0, 6);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel1, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.btnRegister, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.txtConfirm, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.btnRegister, 1, 5);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -102,6 +111,7 @@ namespace MusicList
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(565, 329);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
@@ -110,7 +120,7 @@ namespace MusicList
 			this.txtFullname.Depth = 0;
 			this.txtFullname.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtFullname.Hint = "";
-			this.txtFullname.Location = new System.Drawing.Point(143, 25);
+			this.txtFullname.Location = new System.Drawing.Point(135, 25);
 			this.txtFullname.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtFullname.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtFullname.Name = "txtFullname";
@@ -118,10 +128,11 @@ namespace MusicList
 			this.txtFullname.SelectedText = "";
 			this.txtFullname.SelectionLength = 0;
 			this.txtFullname.SelectionStart = 0;
-			this.txtFullname.Size = new System.Drawing.Size(417, 23);
+			this.txtFullname.Size = new System.Drawing.Size(390, 23);
 			this.txtFullname.TabIndex = 1;
 			this.txtFullname.Text = "Dung Duong";
 			this.txtFullname.UseSystemPasswordChar = false;
+			this.txtFullname.Validating += new System.ComponentModel.CancelEventHandler(this.TxtFullnameValidating);
 			// 
 			// materialLabel2
 			// 
@@ -129,10 +140,10 @@ namespace MusicList
 			this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel2.Location = new System.Drawing.Point(8, 52);
+			this.materialLabel2.Location = new System.Drawing.Point(8, 49);
 			this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel2.Name = "materialLabel2";
-			this.materialLabel2.Size = new System.Drawing.Size(132, 47);
+			this.materialLabel2.Size = new System.Drawing.Size(124, 44);
 			this.materialLabel2.TabIndex = 2;
 			this.materialLabel2.Text = "Email:";
 			this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -142,7 +153,7 @@ namespace MusicList
 			this.txtEmail.Depth = 0;
 			this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtEmail.Hint = "";
-			this.txtEmail.Location = new System.Drawing.Point(143, 72);
+			this.txtEmail.Location = new System.Drawing.Point(135, 69);
 			this.txtEmail.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtEmail.Name = "txtEmail";
@@ -150,10 +161,11 @@ namespace MusicList
 			this.txtEmail.SelectedText = "";
 			this.txtEmail.SelectionLength = 0;
 			this.txtEmail.SelectionStart = 0;
-			this.txtEmail.Size = new System.Drawing.Size(417, 23);
+			this.txtEmail.Size = new System.Drawing.Size(390, 23);
 			this.txtEmail.TabIndex = 3;
 			this.txtEmail.Text = "123@abc.com";
 			this.txtEmail.UseSystemPasswordChar = false;
+			this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmailValidating);
 			// 
 			// materialLabel3
 			// 
@@ -161,10 +173,10 @@ namespace MusicList
 			this.materialLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel3.Location = new System.Drawing.Point(8, 99);
+			this.materialLabel3.Location = new System.Drawing.Point(8, 93);
 			this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel3.Name = "materialLabel3";
-			this.materialLabel3.Size = new System.Drawing.Size(132, 47);
+			this.materialLabel3.Size = new System.Drawing.Size(124, 44);
 			this.materialLabel3.TabIndex = 4;
 			this.materialLabel3.Text = "Password:";
 			this.materialLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,18 +186,19 @@ namespace MusicList
 			this.txtPassword.Depth = 0;
 			this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtPassword.Hint = "";
-			this.txtPassword.Location = new System.Drawing.Point(143, 119);
+			this.txtPassword.Location = new System.Drawing.Point(135, 113);
 			this.txtPassword.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.PasswordChar = '*';
+			this.txtPassword.PasswordChar = '\0';
 			this.txtPassword.SelectedText = "";
 			this.txtPassword.SelectionLength = 0;
 			this.txtPassword.SelectionStart = 0;
-			this.txtPassword.Size = new System.Drawing.Size(417, 23);
+			this.txtPassword.Size = new System.Drawing.Size(390, 23);
 			this.txtPassword.TabIndex = 5;
 			this.txtPassword.Text = "123";
-			this.txtPassword.UseSystemPasswordChar = false;
+			this.txtPassword.UseSystemPasswordChar = true;
+			this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPasswordValidating);
 			// 
 			// materialLabel4
 			// 
@@ -193,10 +206,10 @@ namespace MusicList
 			this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel4.Location = new System.Drawing.Point(8, 146);
+			this.materialLabel4.Location = new System.Drawing.Point(8, 137);
 			this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel4.Name = "materialLabel4";
-			this.materialLabel4.Size = new System.Drawing.Size(132, 47);
+			this.materialLabel4.Size = new System.Drawing.Size(124, 44);
 			this.materialLabel4.TabIndex = 6;
 			this.materialLabel4.Text = "Confirm Password:";
 			this.materialLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -205,15 +218,15 @@ namespace MusicList
 			// 
 			this.btnCancel.AutoSize = true;
 			this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel1.SetColumnSpan(this.btnCancel, 2);
+			this.tableLayoutPanel1.SetColumnSpan(this.btnCancel, 3);
 			this.btnCancel.Depth = 0;
 			this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnCancel.Location = new System.Drawing.Point(55, 279);
+			this.btnCancel.Location = new System.Drawing.Point(55, 299);
 			this.btnCancel.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
 			this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Primary = false;
-			this.btnCancel.Size = new System.Drawing.Size(455, 45);
+			this.btnCancel.Size = new System.Drawing.Size(455, 25);
 			this.btnCancel.TabIndex = 9;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
@@ -221,23 +234,24 @@ namespace MusicList
 			// 
 			// tableLayoutPanel2
 			// 
-			this.tableLayoutPanel2.ColumnCount = 4;
-			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
+			this.tableLayoutPanel2.ColumnCount = 5;
+			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 3);
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel5, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.dtpDOB, 3, 0);
 			this.tableLayoutPanel2.Controls.Add(this.cbxGender, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel6, 2, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 198);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 186);
 			this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 37);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 34);
 			this.tableLayoutPanel2.TabIndex = 10;
 			// 
 			// materialLabel5
@@ -249,7 +263,7 @@ namespace MusicList
 			this.materialLabel5.Location = new System.Drawing.Point(3, 0);
 			this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel5.Name = "materialLabel5";
-			this.materialLabel5.Size = new System.Drawing.Size(105, 37);
+			this.materialLabel5.Size = new System.Drawing.Size(98, 34);
 			this.materialLabel5.TabIndex = 0;
 			this.materialLabel5.Text = "Gender:";
 			this.materialLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -257,22 +271,25 @@ namespace MusicList
 			// dtpDOB
 			// 
 			this.dtpDOB.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dtpDOB.Location = new System.Drawing.Point(347, 3);
+			this.dtpDOB.Location = new System.Drawing.Point(325, 3);
 			this.dtpDOB.MinimumSize = new System.Drawing.Size(0, 29);
 			this.dtpDOB.Name = "dtpDOB";
-			this.dtpDOB.Size = new System.Drawing.Size(205, 29);
+			this.dtpDOB.Size = new System.Drawing.Size(191, 29);
 			this.dtpDOB.TabIndex = 2;
+			this.dtpDOB.Validating += new System.ComponentModel.CancelEventHandler(this.DtpDOBValidating);
 			// 
 			// cbxGender
 			// 
+			this.cbxGender.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cbxGender.FormattingEnabled = true;
 			this.cbxGender.ItemHeight = 23;
 			this.cbxGender.Items.AddRange(new object[] {
 			"Female",
 			"Male"});
-			this.cbxGender.Location = new System.Drawing.Point(114, 3);
+			this.cbxGender.Location = new System.Drawing.Point(104, 5);
+			this.cbxGender.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
 			this.cbxGender.Name = "cbxGender";
-			this.cbxGender.Size = new System.Drawing.Size(105, 29);
+			this.cbxGender.Size = new System.Drawing.Size(104, 29);
 			this.cbxGender.TabIndex = 3;
 			this.cbxGender.UseSelectable = true;
 			// 
@@ -282,10 +299,10 @@ namespace MusicList
 			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.materialLabel6.Location = new System.Drawing.Point(225, 0);
+			this.materialLabel6.Location = new System.Drawing.Point(211, 0);
 			this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel6.Name = "materialLabel6";
-			this.materialLabel6.Size = new System.Drawing.Size(116, 37);
+			this.materialLabel6.Size = new System.Drawing.Size(108, 34);
 			this.materialLabel6.TabIndex = 1;
 			this.materialLabel6.Text = "Day of Birth:";
 			this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -299,43 +316,50 @@ namespace MusicList
 			this.materialLabel1.Location = new System.Drawing.Point(8, 5);
 			this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel1.Name = "materialLabel1";
-			this.materialLabel1.Size = new System.Drawing.Size(132, 47);
+			this.materialLabel1.Size = new System.Drawing.Size(124, 44);
 			this.materialLabel1.TabIndex = 0;
 			this.materialLabel1.Text = "Fullname:";
 			this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// btnRegister
-			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.btnRegister, 2);
-			this.btnRegister.Depth = 0;
-			this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnRegister.Location = new System.Drawing.Point(55, 240);
-			this.btnRegister.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
-			this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
-			this.btnRegister.Name = "btnRegister";
-			this.btnRegister.Primary = true;
-			this.btnRegister.Size = new System.Drawing.Size(455, 39);
-			this.btnRegister.TabIndex = 12;
-			this.btnRegister.Text = "Register";
-			this.btnRegister.UseVisualStyleBackColor = true;
-			this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
 			// 
 			// txtConfirm
 			// 
 			this.txtConfirm.Depth = 0;
 			this.txtConfirm.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtConfirm.Hint = "";
-			this.txtConfirm.Location = new System.Drawing.Point(143, 166);
+			this.txtConfirm.Location = new System.Drawing.Point(135, 157);
 			this.txtConfirm.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
 			this.txtConfirm.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtConfirm.Name = "txtConfirm";
-			this.txtConfirm.PasswordChar = '*';
+			this.txtConfirm.PasswordChar = '\0';
 			this.txtConfirm.SelectedText = "";
 			this.txtConfirm.SelectionLength = 0;
 			this.txtConfirm.SelectionStart = 0;
-			this.txtConfirm.Size = new System.Drawing.Size(417, 23);
+			this.txtConfirm.Size = new System.Drawing.Size(390, 23);
 			this.txtConfirm.TabIndex = 13;
-			this.txtConfirm.UseSystemPasswordChar = false;
+			this.txtConfirm.UseSystemPasswordChar = true;
+			this.txtConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.TxtConfirmValidating);
+			// 
+			// btnRegister
+			// 
+			this.tableLayoutPanel1.SetColumnSpan(this.btnRegister, 3);
+			this.btnRegister.Depth = 0;
+			this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnRegister.Location = new System.Drawing.Point(55, 262);
+			this.btnRegister.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
+			this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
+			this.btnRegister.Name = "btnRegister";
+			this.btnRegister.Primary = true;
+			this.btnRegister.Size = new System.Drawing.Size(455, 37);
+			this.btnRegister.TabIndex = 12;
+			this.btnRegister.Text = "Register";
+			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
+			// 
+			// ErrorPrivider
+			// 
+			this.ErrorPrivider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+			this.ErrorPrivider.ContainerControl = this;
+			this.ErrorPrivider.Icon = global::MusicList.resource.cancel_1;
 			// 
 			// RegisterForm
 			// 
@@ -347,11 +371,12 @@ namespace MusicList
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "RegisterForm";
 			this.Padding = new System.Windows.Forms.Padding(5);
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "RegisterForm";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.ErrorPrivider)).EndInit();
 			this.ResumeLayout(false);
 
 		}

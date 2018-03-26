@@ -63,6 +63,26 @@ namespace MusicList {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
+		internal static System.Drawing.Bitmap cancel {
+			get {
+				object obj = ResourceManager.GetObject("cancel", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+		/// </summary>
+		internal static System.Drawing.Icon cancel_1 {
+			get {
+				object obj = ResourceManager.GetObject("cancel_1", resourceCulture);
+				return ((System.Drawing.Icon)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
 		internal static System.Drawing.Bitmap searching_magnifying_glass {
 			get {
 				object obj = ResourceManager.GetObject("searching-magnifying-glass", resourceCulture);
