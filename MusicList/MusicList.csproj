@@ -127,6 +127,10 @@
       <Project>{111cd1fa-2a62-442f-a4f4-2d1357328aaf}</Project>
       <Name>MusicListLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebCrawler\WebCrawler.csproj">
+      <Project>{43adbb2a-0f1b-40ac-ae2f-f96f35890319}</Project>
+      <Name>WebCrawler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resource" />

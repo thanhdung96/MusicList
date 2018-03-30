@@ -14,7 +14,8 @@ namespace MusicList
 	{
 		private Users user;
 		private UsersController userController;
-		private List<bool> ErrorList;
+		private List<bool> ErrorList;		//true is validate failure
+		private bool registered = false;
 		
 		public RegisterForm()
 		{
@@ -38,16 +39,20 @@ namespace MusicList
 			foreach (Control control in this.Controls) {
 				control.Focus();
 			}
-			foreach (bool validated in ErrorList) {
-				if(!validated){
+			foreach (bool ValidateFailed in ErrorList) {
+				if(ValidateFailed){
 					passed=false;
 					MessageBox.Show("Verify information");
 					break;
 				}
 			}
 			
-			if(passed)
+			if(passed){
 				await Task.Run(() => RegisterThread());
+				if(registered){
+					this.Dispose(true);
+				}
+			}
 		}
 		
 		private async void RegisterThread()
@@ -61,7 +66,7 @@ namespace MusicList
 			
 			if (userController.AddUser(ref this.user)) {
 				CustomMessageBox.Show("Your Account has been Registered.", "Yay!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
-				this.Dispose(true);
+				registered=true;
 			} else {
 				CustomMessageBox.Show("Email already exist.\nPlease use a different email.", "Hold up!!", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Exclamation, CustomMessageBox.AnimateStyle.FadeIn);
 			}

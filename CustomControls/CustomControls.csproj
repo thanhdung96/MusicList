@@ -40,6 +40,9 @@
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\MusicListLibrary\MongoDB.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -97,6 +100,12 @@
     <None Include="Resource\shuffle_active.png" />
     <None Include="Resource\shuffle_inactive.png" />
     <None Include="Resource\voice-message-microphone-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicListLibrary\MusicListLibrary.csproj">
+      <Project>{111cd1fa-2a62-442f-a4f4-2d1357328aaf}</Project>
+      <Name>MusicListLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

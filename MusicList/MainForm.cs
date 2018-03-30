@@ -1,27 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 using CustomControls;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using MusicListLibrary.Models;
+using WebCrawler;
+using System.Windows.Forms;
 
 namespace MusicList
 {
 	public partial class MainForm : MaterialForm
 	{
-		public static Users session;
+		public static volatile Users session;
+		private List<Musics> IndexMusics;
 
 		public MainForm()
 		{
 			InitializeComponent();
+			IndexMusics = new List<Musics>();
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
 		}
 
 		#region Functions
+		private void InitTheme()
+		{
+			MaterialSkinManager manager = MaterialSkinManager.Instance;
+			manager.AddFormToManage(this);
+			manager.Theme = MaterialSkinManager.Themes.DARK;
+			manager.ColorScheme = new ColorScheme(Primary.BlueGrey700, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue700, TextShade.WHITE);
+			manager.Theme = MaterialSkinManager.Themes.LIGHT;
+			
+			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
+			thread.Start(0);
+		}
+
 		private void UpdateInfoLogin()
 		{
 			this.txtFullName.Text = MainForm.session.Fullname.ToString();
@@ -32,7 +50,7 @@ namespace MusicList
 		#endregion Functions
 		
 		#region Events
-		void MainFormShown(object sender, EventArgs e)
+		async void MainFormShown(object sender, EventArgs e)
 		{
 			LoginForm login = new LoginForm();
 			login.ShowInTaskbar = false;
@@ -42,6 +60,16 @@ namespace MusicList
 			else {
 				Thread t = new Thread(new ThreadStart(LblFullNameChangeLoginOK));
 				t.Start();
+				
+				this.Cursor = Cursors.WaitCursor;
+				await Task.Run(() => GetIndexMusics());
+				foreach (Musics music in IndexMusics) {
+					CustomMusicItem custom = new CustomMusicItem(music);
+					custom.Dock = DockStyle.Top;
+					this.pnlMusicItemsList.Controls.Add(custom);
+				}
+				this.Cursor = Cursors.Arrow;
+				
 				UpdateInfoLogin();
 			}
 		}
@@ -53,51 +81,6 @@ namespace MusicList
 			thread.Start(tabindex);
 		}
 
-		void musicitem_ArtitstNameClick(object sender, EventArgs e)
-		{
-			CustomMusicItem item = sender as CustomMusicItem;
-			MessageBox.Show(item.Component);
-		}
-
-		void musicitem_MusicNameClick(object sender, EventArgs e)
-		{
-			CustomMusicItem item = sender as CustomMusicItem;
-			MessageBox.Show(item.Component);
-		}
-
-		private void InitTheme()
-		{
-			MaterialSkinManager manager = MaterialSkinManager.Instance;
-			manager.AddFormToManage(this);
-			manager.Theme = MaterialSkinManager.Themes.DARK;
-			manager.ColorScheme = new ColorScheme(Primary.BlueGrey700, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue700, TextShade.WHITE);
-			manager.Theme = MaterialSkinManager.Themes.LIGHT;
-			
-			Thread thread = new Thread(new ParameterizedThreadStart(EditLableText));
-			thread.Start(0);
-			
-			for (int i = 0; i < 5; i++) {
-				CustomFlatButton custom = new CustomFlatButton();
-				custom.Id = i;
-				custom.Dock = DockStyle.Top;
-				custom.Text = i.ToString();
-				custom.Click += custom_Click;
-				pnlPlaylistContent.Controls.Add(custom);
-				
-				CustomMusicItem musicitem = new CustomMusicItem();
-				musicitem.Dock = DockStyle.Top;
-				musicitem.ArtitstNameClick += musicitem_ArtitstNameClick;
-				musicitem.MusicNameClick += musicitem_MusicNameClick;
-				pnlMusicItemsList.Controls.Add(musicitem);
-			}
-		}
-
-		void custom_Click(object sender, EventArgs e)
-		{
-			CustomFlatButton custom = sender as CustomFlatButton;
-			CustomMessageBox.Show("Id: " + custom.Id.ToString(), custom.Text, CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
-		}
-		
 		void BtnUpdateInfoClick(object sender, EventArgs e)
 		{
 	
@@ -167,6 +150,12 @@ namespace MusicList
 				this.lblFullname.ForeColor = Color.FromArgb(i, Color.White);
 				Thread.Sleep(2);
 			}
+		}
+		
+		private async void GetIndexMusics()
+		{
+			MusicCrawler crawler = new MusicCrawler();
+			IndexMusics = crawler.GetIndex().ToList();
 		}
 		#endregion Threading
 	}

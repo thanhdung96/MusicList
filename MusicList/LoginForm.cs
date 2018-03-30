@@ -20,7 +20,6 @@ namespace MusicList
 			userController = new UsersController();
 			user = new Users();
 			this.LoginOK = false;
-			
 		}
 		
 		void BtnRegisterClick(object sender, EventArgs e)

@@ -1,14 +1,26 @@
 ﻿using System;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace MusicListLibrary.Models
 {
+	[BsonIgnoreExtraElements]
+	[Serializable]
 	public sealed class Users
 	{
+		[BsonRequired]
+		[BsonIdAttribute]
 		public ObjectId Id{ get; set; }
+		
+		[BsonRequired]
 		public BsonString Fullname{ get; set; }
+		
+		[BsonRequired]
 		public BsonString Email{ get; set; }
+		
+		[BsonRequired]
 		public BsonString Password{ get; set; }
+		
 		public BsonBoolean Gender{ get; set; }
 		public BsonDateTime DOB{ get; set; }
 		public BsonBoolean Disabled{ get; set; }

@@ -35,7 +35,7 @@ namespace MusicList
 		private MetroDateTime dtpDOB;
 		private MetroComboBox cbxGender;
 		private MaterialSingleLineTextField txtConfirm;
-		private System.Windows.Forms.ErrorProvider ErrorPrivider;
+		private ErrorProvider ErrorPrivider;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -58,36 +58,36 @@ namespace MusicList
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.txtFullname = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-			this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-			this.txtPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-			this.btnCancel = new MaterialSkin.Controls.MaterialFlatButton();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+			this.components = new Container();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.txtFullname = new MaterialSingleLineTextField();
+			this.materialLabel2 = new MaterialLabel();
+			this.txtEmail = new MaterialSingleLineTextField();
+			this.materialLabel3 = new MaterialLabel();
+			this.txtPassword = new MaterialSingleLineTextField();
+			this.materialLabel4 = new MaterialLabel();
+			this.btnCancel = new MaterialFlatButton();
+			this.tableLayoutPanel2 = new TableLayoutPanel();
+			this.materialLabel5 = new MaterialLabel();
 			this.dtpDOB = new MetroFramework.Controls.MetroDateTime();
 			this.cbxGender = new MetroFramework.Controls.MetroComboBox();
-			this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-			this.txtConfirm = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.btnRegister = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.ErrorPrivider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.materialLabel6 = new MaterialLabel();
+			this.materialLabel1 = new MaterialLabel();
+			this.txtConfirm = new MaterialSingleLineTextField();
+			this.btnRegister = new MaterialRaisedButton();
+			this.ErrorPrivider = new ErrorProvider(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ErrorPrivider)).BeginInit();
+			((ISupportInitialize)(this.ErrorPrivider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
 			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
 			this.tableLayoutPanel1.Controls.Add(this.txtFullname, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel2, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 1);
@@ -99,29 +99,29 @@ namespace MusicList
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.txtConfirm, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.btnRegister, 1, 5);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Dock = DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
+			this.tableLayoutPanel1.Padding = new Padding(5);
 			this.tableLayoutPanel1.RowCount = 7;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(565, 329);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// txtFullname
 			// 
 			this.txtFullname.Depth = 0;
-			this.txtFullname.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtFullname.Dock = DockStyle.Fill;
 			this.txtFullname.Hint = "";
 			this.txtFullname.Location = new System.Drawing.Point(135, 25);
-			this.txtFullname.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+			this.txtFullname.Margin = new Padding(0, 20, 0, 0);
 			this.txtFullname.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtFullname.Name = "txtFullname";
 			this.txtFullname.PasswordChar = '\0';
@@ -132,12 +132,12 @@ namespace MusicList
 			this.txtFullname.TabIndex = 1;
 			this.txtFullname.Text = "Dung Duong";
 			this.txtFullname.UseSystemPasswordChar = false;
-			this.txtFullname.Validating += new System.ComponentModel.CancelEventHandler(this.TxtFullnameValidating);
+			this.txtFullname.Validating += new CancelEventHandler(this.TxtFullnameValidating);
 			// 
 			// materialLabel2
 			// 
 			this.materialLabel2.Depth = 0;
-			this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel2.Dock = DockStyle.Fill;
 			this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel2.Location = new System.Drawing.Point(8, 49);
@@ -151,10 +151,10 @@ namespace MusicList
 			// txtEmail
 			// 
 			this.txtEmail.Depth = 0;
-			this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtEmail.Dock = DockStyle.Fill;
 			this.txtEmail.Hint = "";
 			this.txtEmail.Location = new System.Drawing.Point(135, 69);
-			this.txtEmail.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+			this.txtEmail.Margin = new Padding(0, 20, 0, 0);
 			this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtEmail.Name = "txtEmail";
 			this.txtEmail.PasswordChar = '\0';
@@ -165,12 +165,12 @@ namespace MusicList
 			this.txtEmail.TabIndex = 3;
 			this.txtEmail.Text = "123@abc.com";
 			this.txtEmail.UseSystemPasswordChar = false;
-			this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmailValidating);
+			this.txtEmail.Validating += new CancelEventHandler(this.TxtEmailValidating);
 			// 
 			// materialLabel3
 			// 
 			this.materialLabel3.Depth = 0;
-			this.materialLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel3.Dock = DockStyle.Fill;
 			this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel3.Location = new System.Drawing.Point(8, 93);
@@ -184,10 +184,10 @@ namespace MusicList
 			// txtPassword
 			// 
 			this.txtPassword.Depth = 0;
-			this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtPassword.Dock = DockStyle.Fill;
 			this.txtPassword.Hint = "";
 			this.txtPassword.Location = new System.Drawing.Point(135, 113);
-			this.txtPassword.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+			this.txtPassword.Margin = new Padding(0, 20, 0, 0);
 			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = '\0';
@@ -198,12 +198,12 @@ namespace MusicList
 			this.txtPassword.TabIndex = 5;
 			this.txtPassword.Text = "123";
 			this.txtPassword.UseSystemPasswordChar = true;
-			this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPasswordValidating);
+			this.txtPassword.Validating += new CancelEventHandler(this.TxtPasswordValidating);
 			// 
 			// materialLabel4
 			// 
 			this.materialLabel4.Depth = 0;
-			this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel4.Dock = DockStyle.Fill;
 			this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel4.Location = new System.Drawing.Point(8, 137);
@@ -217,12 +217,12 @@ namespace MusicList
 			// btnCancel
 			// 
 			this.btnCancel.AutoSize = true;
-			this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel1.SetColumnSpan(this.btnCancel, 3);
 			this.btnCancel.Depth = 0;
-			this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnCancel.Dock = DockStyle.Fill;
 			this.btnCancel.Location = new System.Drawing.Point(55, 299);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
+			this.btnCancel.Margin = new Padding(50, 0, 50, 0);
 			this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Primary = false;
@@ -236,28 +236,28 @@ namespace MusicList
 			// 
 			this.tableLayoutPanel2.ColumnCount = 5;
 			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 3);
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel5, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.dtpDOB, 3, 0);
 			this.tableLayoutPanel2.Controls.Add(this.cbxGender, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.materialLabel6, 2, 0);
-			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Dock = DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 186);
-			this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+			this.tableLayoutPanel2.Margin = new Padding(0, 5, 0, 5);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 34);
 			this.tableLayoutPanel2.TabIndex = 10;
 			// 
 			// materialLabel5
 			// 
 			this.materialLabel5.Depth = 0;
-			this.materialLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel5.Dock = DockStyle.Fill;
 			this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel5.Location = new System.Drawing.Point(3, 0);
@@ -270,24 +270,24 @@ namespace MusicList
 			// 
 			// dtpDOB
 			// 
-			this.dtpDOB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dtpDOB.Dock = DockStyle.Fill;
 			this.dtpDOB.Location = new System.Drawing.Point(325, 3);
 			this.dtpDOB.MinimumSize = new System.Drawing.Size(0, 29);
 			this.dtpDOB.Name = "dtpDOB";
 			this.dtpDOB.Size = new System.Drawing.Size(191, 29);
 			this.dtpDOB.TabIndex = 2;
-			this.dtpDOB.Validating += new System.ComponentModel.CancelEventHandler(this.DtpDOBValidating);
+			this.dtpDOB.Validating += new CancelEventHandler(this.DtpDOBValidating);
 			// 
 			// cbxGender
 			// 
-			this.cbxGender.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cbxGender.Dock = DockStyle.Fill;
 			this.cbxGender.FormattingEnabled = true;
 			this.cbxGender.ItemHeight = 23;
 			this.cbxGender.Items.AddRange(new object[] {
 			"Female",
 			"Male"});
 			this.cbxGender.Location = new System.Drawing.Point(104, 5);
-			this.cbxGender.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+			this.cbxGender.Margin = new Padding(0, 5, 0, 0);
 			this.cbxGender.Name = "cbxGender";
 			this.cbxGender.Size = new System.Drawing.Size(104, 29);
 			this.cbxGender.TabIndex = 3;
@@ -296,7 +296,7 @@ namespace MusicList
 			// materialLabel6
 			// 
 			this.materialLabel6.Depth = 0;
-			this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel6.Dock = DockStyle.Fill;
 			this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel6.Location = new System.Drawing.Point(211, 0);
@@ -310,7 +310,7 @@ namespace MusicList
 			// materialLabel1
 			// 
 			this.materialLabel1.Depth = 0;
-			this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.materialLabel1.Dock = DockStyle.Fill;
 			this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel1.Location = new System.Drawing.Point(8, 5);
@@ -324,10 +324,10 @@ namespace MusicList
 			// txtConfirm
 			// 
 			this.txtConfirm.Depth = 0;
-			this.txtConfirm.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtConfirm.Dock = DockStyle.Fill;
 			this.txtConfirm.Hint = "";
 			this.txtConfirm.Location = new System.Drawing.Point(135, 157);
-			this.txtConfirm.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+			this.txtConfirm.Margin = new Padding(0, 20, 0, 0);
 			this.txtConfirm.MouseState = MaterialSkin.MouseState.HOVER;
 			this.txtConfirm.Name = "txtConfirm";
 			this.txtConfirm.PasswordChar = '\0';
@@ -337,15 +337,15 @@ namespace MusicList
 			this.txtConfirm.Size = new System.Drawing.Size(390, 23);
 			this.txtConfirm.TabIndex = 13;
 			this.txtConfirm.UseSystemPasswordChar = true;
-			this.txtConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.TxtConfirmValidating);
+			this.txtConfirm.Validating += new CancelEventHandler(this.TxtConfirmValidating);
 			// 
 			// btnRegister
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.btnRegister, 3);
 			this.btnRegister.Depth = 0;
-			this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnRegister.Dock = DockStyle.Fill;
 			this.btnRegister.Location = new System.Drawing.Point(55, 262);
-			this.btnRegister.Margin = new System.Windows.Forms.Padding(50, 0, 50, 0);
+			this.btnRegister.Margin = new Padding(50, 0, 50, 0);
 			this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Primary = true;
@@ -357,26 +357,26 @@ namespace MusicList
 			// 
 			// ErrorPrivider
 			// 
-			this.ErrorPrivider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+			this.ErrorPrivider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
 			this.ErrorPrivider.ContainerControl = this;
 			this.ErrorPrivider.Icon = global::MusicList.resource.cancel_1;
 			// 
 			// RegisterForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 			this.ClientSize = new System.Drawing.Size(575, 339);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.FormBorderStyle = FormBorderStyle.None;
 			this.Name = "RegisterForm";
-			this.Padding = new System.Windows.Forms.Padding(5);
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Padding = new Padding(5);
+			this.StartPosition = FormStartPosition.CenterParent;
 			this.Text = "RegisterForm";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.ErrorPrivider)).EndInit();
+			((ISupportInitialize)(this.ErrorPrivider)).EndInit();
 			this.ResumeLayout(false);
 
 		}

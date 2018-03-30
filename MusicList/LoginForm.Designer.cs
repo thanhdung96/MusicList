@@ -29,7 +29,7 @@ namespace MusicList
 		private TableLayoutPanel tableLayoutPanel3;
 		private MaterialFlatButton btnRegister;
 		private MaterialFlatButton btnCancel;
-		private System.Windows.Forms.ErrorProvider emailError;
+		private ErrorProvider emailError;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,57 +52,57 @@ namespace MusicList
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-			this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-			this.txtUsername = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.txtPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
-			this.btnShow = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.btnRegister = new MaterialSkin.Controls.MaterialFlatButton();
-			this.btnCancel = new MaterialSkin.Controls.MaterialFlatButton();
-			this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
-			this.emailError = new System.Windows.Forms.ErrorProvider(this.components);
+			this.components = new Container();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
+			this.materialLabel1 = new MaterialLabel();
+			this.materialLabel2 = new MaterialLabel();
+			this.txtUsername = new MaterialSingleLineTextField();
+			this.tableLayoutPanel2 = new TableLayoutPanel();
+			this.txtPassword = new MaterialSingleLineTextField();
+			this.btnShow = new MaterialRaisedButton();
+			this.tableLayoutPanel3 = new TableLayoutPanel();
+			this.btnRegister = new MaterialFlatButton();
+			this.btnCancel = new MaterialFlatButton();
+			this.btnLogin = new MaterialRaisedButton();
+			this.emailError = new ErrorProvider(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.emailError)).BeginInit();
+			((ISupportInitialize)(this.emailError)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
 			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.4965F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.5035F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.4965F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 76.5035F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.materialLabel2, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.txtUsername, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.btnLogin, 0, 2);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Dock = DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 4;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(456, 155);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// materialLabel1
 			// 
 			this.materialLabel1.Depth = 0;
-			this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.materialLabel1.Dock = DockStyle.Right;
 			this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel1.Location = new System.Drawing.Point(0, 0);
-			this.materialLabel1.Margin = new System.Windows.Forms.Padding(0);
+			this.materialLabel1.Margin = new Padding(0);
 			this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
 			this.materialLabel1.Name = "materialLabel1";
 			this.materialLabel1.Size = new System.Drawing.Size(97, 38);
@@ -113,7 +113,7 @@ namespace MusicList
 			// materialLabel2
 			// 
 			this.materialLabel2.Depth = 0;
-			this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+			this.materialLabel2.Dock = DockStyle.Right;
 			this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
 			this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.materialLabel2.Location = new System.Drawing.Point(3, 38);
@@ -128,7 +128,7 @@ namespace MusicList
 			// 
 			this.txtUsername.CausesValidation = false;
 			this.txtUsername.Depth = 0;
-			this.txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtUsername.Dock = DockStyle.Fill;
 			this.txtUsername.Hint = "";
 			this.txtUsername.Location = new System.Drawing.Point(100, 3);
 			this.txtUsername.MouseState = MaterialSkin.MouseState.HOVER;
@@ -141,24 +141,24 @@ namespace MusicList
 			this.txtUsername.TabIndex = 1;
 			this.txtUsername.Text = "123@abc.com";
 			this.txtUsername.UseSystemPasswordChar = false;
-			this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.TxtUsernameValidating);
+			this.txtUsername.Validating += new CancelEventHandler(this.TxtUsernameValidating);
 			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.25698F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.74302F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 76.25698F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.74302F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
 			this.tableLayoutPanel2.Controls.Add(this.txtPassword, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.btnShow, 1, 0);
-			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Dock = DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(97, 38);
-			this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel2.Margin = new Padding(0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+			this.tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+			this.tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(359, 38);
 			this.tableLayoutPanel2.TabIndex = 3;
 			// 
@@ -166,7 +166,7 @@ namespace MusicList
 			// 
 			this.txtPassword.CausesValidation = false;
 			this.txtPassword.Depth = 0;
-			this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtPassword.Dock = DockStyle.Fill;
 			this.txtPassword.Hint = "";
 			this.txtPassword.Location = new System.Drawing.Point(3, 3);
 			this.txtPassword.MouseState = MaterialSkin.MouseState.HOVER;
@@ -184,7 +184,7 @@ namespace MusicList
 			// 
 			this.btnShow.CausesValidation = false;
 			this.btnShow.Depth = 0;
-			this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnShow.Dock = DockStyle.Fill;
 			this.btnShow.Location = new System.Drawing.Point(276, 3);
 			this.btnShow.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnShow.Name = "btnShow";
@@ -193,35 +193,35 @@ namespace MusicList
 			this.btnShow.TabIndex = 1;
 			this.btnShow.Text = "Show";
 			this.btnShow.UseVisualStyleBackColor = true;
-			this.btnShow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnShowMouseDown);
-			this.btnShow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnShowMouseUp);
+			this.btnShow.MouseDown += new MouseEventHandler(this.BtnShowMouseDown);
+			this.btnShow.MouseUp += new MouseEventHandler(this.BtnShowMouseUp);
 			// 
 			// tableLayoutPanel3
 			// 
 			this.tableLayoutPanel3.ColumnCount = 2;
 			this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel3, 3);
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			this.tableLayoutPanel3.Controls.Add(this.btnRegister, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.btnCancel, 1, 0);
-			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel3.Dock = DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 122);
-			this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel3.Margin = new Padding(0);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(456, 33);
 			this.tableLayoutPanel3.TabIndex = 7;
 			// 
 			// btnRegister
 			// 
 			this.btnRegister.AutoSize = true;
-			this.btnRegister.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnRegister.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			this.btnRegister.CausesValidation = false;
 			this.btnRegister.Depth = 0;
-			this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnRegister.Dock = DockStyle.Fill;
 			this.btnRegister.Location = new System.Drawing.Point(0, 0);
-			this.btnRegister.Margin = new System.Windows.Forms.Padding(0);
+			this.btnRegister.Margin = new Padding(0);
 			this.btnRegister.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Primary = false;
@@ -234,12 +234,12 @@ namespace MusicList
 			// btnCancel
 			// 
 			this.btnCancel.AutoSize = true;
-			this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			this.btnCancel.CausesValidation = false;
 			this.btnCancel.Depth = 0;
-			this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnCancel.Dock = DockStyle.Fill;
 			this.btnCancel.Location = new System.Drawing.Point(228, 0);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
+			this.btnCancel.Margin = new Padding(0);
 			this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Primary = false;
@@ -253,7 +253,7 @@ namespace MusicList
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.btnLogin, 3);
 			this.btnLogin.Depth = 0;
-			this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnLogin.Dock = DockStyle.Fill;
 			this.btnLogin.Location = new System.Drawing.Point(3, 79);
 			this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
 			this.btnLogin.Name = "btnLogin";
@@ -267,25 +267,25 @@ namespace MusicList
 			// emailError
 			// 
 			this.emailError.ContainerControl = this;
-			this.emailError.Icon = global::MusicList.resource.cancel_1;
+			this.emailError.Icon = resource.cancel_1;
 			// 
 			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 			this.ClientSize = new System.Drawing.Size(466, 165);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.FormBorderStyle = FormBorderStyle.None;
 			this.Name = "LoginForm";
-			this.Padding = new System.Windows.Forms.Padding(5);
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Padding = new Padding(5);
+			this.StartPosition = FormStartPosition.CenterParent;
 			this.Text = "LoginForm";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.emailError)).EndInit();
+			((ISupportInitialize)(this.emailError)).EndInit();
 			this.ResumeLayout(false);
 
 		}
