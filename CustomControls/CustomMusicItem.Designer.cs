@@ -22,7 +22,7 @@ namespace CustomControls
 		private MaterialSkin.Controls.MaterialLabel materialLabel2;
 		private MaterialSkin.Controls.MaterialLabel lblMusicName;
 		private MaterialSkin.Controls.MaterialLabel lblListens;
-		private MaterialSkin.Controls.MaterialLabel lblSinger;
+		private System.Windows.Forms.Panel pnlSingers;
 		
 		/// <summary>
 		/// Disposes resources used by the control.
@@ -51,9 +51,9 @@ namespace CustomControls
 			this.lblMusicName = new MaterialSkin.Controls.MaterialLabel();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.lblListens = new MaterialSkin.Controls.MaterialLabel();
-			this.lblSinger = new MaterialSkin.Controls.MaterialLabel();
 			this.lblIconMusic = new MaterialSkin.Controls.MaterialLabel();
 			this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+			this.pnlSingers = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -120,6 +120,8 @@ namespace CustomControls
 			this.lblMusicName.Text = "Music Name";
 			this.lblMusicName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.lblMusicName.Click += new System.EventHandler(this.LblMusicNameClick);
+			this.lblMusicName.MouseEnter += new System.EventHandler(this.LblMusicNameMouseEnter);
+			this.lblMusicName.MouseLeave += new System.EventHandler(this.LblMusicNameMouseLeave);
 			// 
 			// tableLayoutPanel3
 			// 
@@ -130,9 +132,9 @@ namespace CustomControls
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel3.Controls.Add(this.lblListens, 3, 0);
-			this.tableLayoutPanel3.Controls.Add(this.lblSinger, 1, 0);
 			this.tableLayoutPanel3.Controls.Add(this.lblIconMusic, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.materialLabel1, 2, 0);
+			this.tableLayoutPanel3.Controls.Add(this.pnlSingers, 1, 0);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 28);
 			this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -155,21 +157,6 @@ namespace CustomControls
 			this.lblListens.TabIndex = 5;
 			this.lblListens.Text = "Listen";
 			this.lblListens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lblSinger
-			// 
-			this.lblSinger.Depth = 0;
-			this.lblSinger.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lblSinger.Font = new System.Drawing.Font("Roboto", 11F);
-			this.lblSinger.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lblSinger.Location = new System.Drawing.Point(40, 0);
-			this.lblSinger.MouseState = MaterialSkin.MouseState.HOVER;
-			this.lblSinger.Name = "lblSinger";
-			this.lblSinger.Size = new System.Drawing.Size(275, 29);
-			this.lblSinger.TabIndex = 4;
-			this.lblSinger.Text = "Singer";
-			this.lblSinger.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.lblSinger.Click += new System.EventHandler(this.LblSingerClick);
 			// 
 			// lblIconMusic
 			// 
@@ -198,6 +185,15 @@ namespace CustomControls
 			this.materialLabel1.Name = "materialLabel1";
 			this.materialLabel1.Size = new System.Drawing.Size(37, 29);
 			this.materialLabel1.TabIndex = 1;
+			// 
+			// pnlSingers
+			// 
+			this.pnlSingers.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlSingers.Location = new System.Drawing.Point(37, 0);
+			this.pnlSingers.Margin = new System.Windows.Forms.Padding(0);
+			this.pnlSingers.Name = "pnlSingers";
+			this.pnlSingers.Size = new System.Drawing.Size(281, 29);
+			this.pnlSingers.TabIndex = 6;
 			// 
 			// CustomMusicItem
 			// 

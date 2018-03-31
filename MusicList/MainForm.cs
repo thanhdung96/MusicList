@@ -28,6 +28,24 @@ namespace MusicList
 		}
 
 		#region Functions
+		public static List<Color> RgbLinearInterpolate(Color start, Color end, int colorCount)
+		{
+			List<Color> ret = new List<Color>();
+
+			// linear interpolation lerp (r,a,b) = (1-r)*a + r*b = (1-r)*(ax,ay,az) + r*(bx,by,bz)
+			for (int n = 0; n < colorCount; n++) {
+				double r = (double)n / (double)(colorCount - 1);
+				double nr = 1.0 - r;
+				double A = (nr * start.A) + (r * end.A);
+				double R = (nr * start.R) + (r * end.R);
+				double G = (nr * start.G) + (r * end.G);
+				double B = (nr * start.B) + (r * end.B);
+
+				ret.Add(Color.FromArgb((byte)A, (byte)R, (byte)G, (byte)B));
+			}
+
+			return ret;
+		}
 		private void InitTheme()
 		{
 			MaterialSkinManager manager = MaterialSkinManager.Instance;
@@ -67,6 +85,8 @@ namespace MusicList
 					CustomMusicItem custom = new CustomMusicItem(music);
 					custom.Dock = DockStyle.Top;
 					this.pnlMusicItemsList.Controls.Add(custom);
+					custom.MusicNameClick+= custom_MusicNameClick;
+					custom.ArtitstNameClick+= custom_ArtitstNameClick;
 				}
 				this.Cursor = Cursors.Arrow;
 				
@@ -74,6 +94,16 @@ namespace MusicList
 			}
 		}
 
+		void custom_MusicNameClick(object sender, EventArgs e)
+		{
+			MessageBox.Show(((CustomMusicItem)sender).SongName);
+		}
+
+		void custom_ArtitstNameClick(object sender, EventArgs e)
+		{
+			MessageBox.Show(((CustomMusicItem)sender).SingerName);
+		}
+		
 		void tcMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int tabindex = this.tcMainTabControl.SelectedIndex;
@@ -146,9 +176,10 @@ namespace MusicList
 		void LblFullNameChangeLoginOK()
 		{
 			this.lblFullname.Text = MainForm.session.Fullname.ToString();
-			for (int i = 0; i < 255; i += 5) {
-				this.lblFullname.ForeColor = Color.FromArgb(i, Color.White);
-				Thread.Sleep(2);
+			List<Color> change = RgbLinearInterpolate(Color.FromArgb(0, 55, 71, 79), Color.White, 20);
+			foreach (Color color in change) {
+				lblFullname.ForeColor = color;
+				Thread.Sleep(20);
 			}
 		}
 		

@@ -50,7 +50,7 @@ namespace WebCrawler
 		private void StringReformat(ref Musics music, string StringToReformat)
 		{
 			List<String> split = StringToReformat.Split(' ').ToList();
-			List<string> singers = new List<string>();
+			//List<string> singers = new List<string>();
 			split.RemoveAll(t => t == "");
 
 			//apply listen value to music then remove from list
@@ -59,20 +59,17 @@ namespace WebCrawler
 			
 			string singer = "";
 			for (int i = 0; i < split.Count; i++) {
-				if (split[i] == ",") {
-					singer += " " + split[i];
+				if (i == split.Count - 1 || split[i][split[i].Length - 1] == ',') {		//if í last index in array
+					singer += split[i][split[i].Length - 1] == ',' ? " " + split[i].Substring(0, split[i].Length - 1) : " " + split[i];
+					//singer += " " + split[i];
 					singer = singer.Substring(1);
-					singers.Add(singer);
-				} else if (i == split.Count - 1) {//last index
-					singer += " " + split[i];
-					singer = singer.Substring(1);
-
-					singers.Add(singer);
-				} else {
+					music.Singers.Add(singer);
+					singer = "";
+				} else {		//if lát character in current is , add to list
 					singer += " " + split[i];
 				}
 			}
-			music.Singers.AddRange(singers);
+			//music.Singers.AddRange(singers);
 		}
 	}
 }
