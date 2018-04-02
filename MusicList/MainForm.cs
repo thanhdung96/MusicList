@@ -4,13 +4,13 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Bunifu.Framework.UI;
 using CustomControls;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using MusicListLibrary.Models;
 using WebCrawler;
-using System.Windows.Forms;
-using Bunifu.Framework.UI;
 
 namespace MusicList
 {
@@ -82,7 +82,7 @@ namespace MusicList
 				lsPages.Add(button);
 				pnlPages.Controls.Add(button);
 			}
-			lsPages[lsPages.Count - 1].Font = new Font(lsPages[3].Font, FontStyle.Bold);
+			lsPages[lsPages.Count - 1].Font = new Font(lsPages[lsPages.Count - 1].Font, FontStyle.Bold);
 			
 			MaterialSkinManager manager = MaterialSkinManager.Instance;
 			manager.AddFormToManage(this);
@@ -142,13 +142,17 @@ namespace MusicList
 			this.AddMusicItems();
 		}
 
-		void button_Click(object sender, EventArgs e)
+		void button_Click(object sender, EventArgs e)	//page number clicked
 		{
-			BunifuThinButton2 clickedButton = ((BunifuThinButton2)sender);
+			BunifuThinButton2 clickedButton = sender as BunifuThinButton2;
 			if (clickedButton.Font.Style == FontStyle.Regular) {
 				if (!string.IsNullOrEmpty(this.txtFind.Text)) {		//if find query is not empty
 					if (this.cbxFindBy.SelectedIndex == 0) {		//if finding singer
 						GetMusicsBySinger(this.txtFind.Text, Convert.ToInt32(clickedButton.ButtonText));
+						this.AddMusicItems();
+					}
+					else{
+						GetMusicsByName(this.txtFind.Text, Convert.ToInt32(clickedButton.ButtonText));
 						this.AddMusicItems();
 					}
 				} else {
@@ -190,8 +194,17 @@ namespace MusicList
 					this.cbxFindBy.Visible = false;
 					this.lblFindBy.Visible = false;
 				} else {
+					/*
+					 * start finding by singer
+					 * */
 					if (this.cbxFindBy.SelectedIndex == 0) {
 						await Task.Run(() => GetMusicsBySinger(this.txtFind.Text));
+						this.AddMusicItems();
+					}else{
+						/*
+						 * else find by music name
+						 * */
+						await Task.Run(() => GetMusicsByName(this.txtFind.Text));
 						this.AddMusicItems();
 					}
 				}
@@ -251,11 +264,19 @@ namespace MusicList
 		private void GetMusicsBySinger(string singer, int page = 1)
 		{
 			crawler = new MusicCrawler();
+			IndexMusics.Clear();
 			IndexMusics = crawler.GetMusicsBySinger(singer, page).ToList();
+		}
+		private void GetMusicsByName(string name, int page = 1)
+		{
+			crawler = new MusicCrawler();
+			IndexMusics.Clear();
+			IndexMusics = crawler.GetMusicsByName(name, page).ToList();
 		}
 		private void GetIndexMusics(int page = 1)
 		{
 			crawler = new MusicCrawler();
+			IndexMusics.Clear();
 			IndexMusics = crawler.GetIndex(page).ToList();
 		}
 		#endregion Threading

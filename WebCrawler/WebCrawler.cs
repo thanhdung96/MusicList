@@ -35,6 +35,13 @@ namespace WebCrawler
 			return ParseToMusicsObjects();
 		}
 		
+		public IEnumerable<Musics> GetMusicsByName(string name, int page=1){
+			List<Musics> ret = new List<Musics>();
+			htmlDoc = web.Load(string.Format(AddressSongFind, name.Replace(' ', '+'), page));
+			
+			return ParseToMusicsObjects();
+		}
+		
 		private IEnumerable<Musics> ParseToMusicsObjects()
 		{
 			List<Musics> ret = new List<Musics>();
