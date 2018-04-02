@@ -55,7 +55,7 @@ namespace MusicList
 			}
 		}
 		
-		private async void RegisterThread()
+		private void RegisterThread()
 		{
 			this.user.Email = this.txtEmail.Text;
 			this.user.Fullname = this.txtFullname.Text;

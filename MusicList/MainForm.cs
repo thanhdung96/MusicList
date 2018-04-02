@@ -26,6 +26,7 @@ namespace MusicList
 			InitializeComponent();
 			IndexMusics = new List<Musics>();
 			lsPages = new List<BunifuThinButton2>();
+			this.cbxFindBy.SelectedIndex = 0;
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
@@ -63,11 +64,10 @@ namespace MusicList
 		}
 		private void InitTheme()
 		{
-			for (int i = 4; i >= 1; i--) {
+			for (int i = 5; i >= 1; i--) {
 				BunifuThinButton2 button = new BunifuThinButton2 {
 					ButtonText = i.ToString(),
 					Dock = DockStyle.Left,
-					//Font = new Font("Arial", FontStyle.Bold),
 					ActiveFillColor = Color.FromArgb(255, 0, 40, 77),
 					ActiveLineColor = Color.FromArgb(255, 0, 40, 77),
 					ActiveForecolor = Color.White,
@@ -75,13 +75,15 @@ namespace MusicList
 					IdleLineColor = Color.FromArgb(255, 0, 40, 77),
 					IdleForecolor = Color.FromArgb(255, 0, 40, 77),
 					TextAlign = ContentAlignment.MiddleCenter,
-					Width = 45,
+					Width = 40,
 					Height = 29
 				};
+				button.Click += button_Click;
 				lsPages.Add(button);
 				pnlPages.Controls.Add(button);
-				
 			}
+			lsPages[lsPages.Count - 1].Font = new Font(lsPages[3].Font, FontStyle.Bold);
+			
 			MaterialSkinManager manager = MaterialSkinManager.Instance;
 			manager.AddFormToManage(this);
 			manager.Theme = MaterialSkinManager.Themes.DARK;
@@ -135,7 +137,29 @@ namespace MusicList
 		void custom_ArtitstNameClick(object sender, EventArgs e)
 		{
 			//TODO: implement find by singer here
-			MessageBox.Show(((CustomMusicItem)sender).SingerName);
+			this.txtFind.Text = ((CustomMusicItem)sender).SingerName;
+			this.GetMusicsBySinger(this.txtFind.Text);
+			this.AddMusicItems();
+		}
+
+		void button_Click(object sender, EventArgs e)
+		{
+			BunifuThinButton2 clickedButton = ((BunifuThinButton2)sender);
+			if (clickedButton.Font.Style == FontStyle.Regular) {
+				if (!string.IsNullOrEmpty(this.txtFind.Text)) {		//if find query is not empty
+					if (this.cbxFindBy.SelectedIndex == 0) {		//if finding singer
+						GetMusicsBySinger(this.txtFind.Text, Convert.ToInt32(clickedButton.ButtonText));
+						this.AddMusicItems();
+					}
+				} else {
+					GetIndexMusics(Convert.ToInt32(clickedButton.ButtonText));
+					this.AddMusicItems();
+				}
+			}
+			foreach (BunifuThinButton2 button in this.lsPages) {
+				button.Font = new Font(button.Font, FontStyle.Regular);
+			}
+			clickedButton.Font = new Font(clickedButton.Font, FontStyle.Bold);
 		}
 		
 		void tcMainTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,7 +171,7 @@ namespace MusicList
 
 		void BtnUpdateInfoClick(object sender, EventArgs e)
 		{
-	
+			
 		}
 		
 		void BtnShowPlaylistsClick(object sender, EventArgs e)
@@ -224,12 +248,12 @@ namespace MusicList
 			}
 		}
 		
-		private async void GetMusicsBySinger(string singer, int page = 1)
+		private void GetMusicsBySinger(string singer, int page = 1)
 		{
 			crawler = new MusicCrawler();
 			IndexMusics = crawler.GetMusicsBySinger(singer, page).ToList();
 		}
-		private async void GetIndexMusics(int page = 1)
+		private void GetIndexMusics(int page = 1)
 		{
 			crawler = new MusicCrawler();
 			IndexMusics = crawler.GetIndex(page).ToList();

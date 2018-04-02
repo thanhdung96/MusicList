@@ -55,7 +55,7 @@ namespace MusicList
 			}
 		}
 		
-		private async void LoginThread()
+		private void LoginThread()
 		{
 			user.Email = this.txtUsername.Text;
 			user.Password = this.txtPassword.Text;
