@@ -23,6 +23,9 @@ namespace MusicListLibrary.Models
 		public BsonInt32 Listens{get;set;}
 		[BsonRequired]
 		[BsonDefaultValue(null)]
+		public BsonString URLId{get;set;}
+		[BsonRequired]
+		[BsonDefaultValue(null)]
 		public BsonString URLWeb{get;set;}
 		[BsonDefaultValue(null)]
 		public BsonString URLData{get;set;}

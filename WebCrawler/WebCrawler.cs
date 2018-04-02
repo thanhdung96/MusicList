@@ -8,28 +8,37 @@ namespace WebCrawler
 {
 	public class MusicCrawler
 	{
-		private readonly string AddressIndex = "http://m.nhaccuatui.com/bai-hat.html";
+		private readonly string AddressIndex = "http://m.nhaccuatui.com/tim-kiem/bai-hat?page={0}";
 		//replace {0} space with '+'
 		private readonly string AddressSongFind = "http://m.nhaccuatui.com/tim-kiem?q={0}";
-		private readonly string AddressSingerFind = "http://m.nhaccuatui.com/tim-kiem?q={0}&b=singer";
+		private readonly string AddressSingerFind = "http://m.nhaccuatui.com/tim-kiem?q={0}&b=singer&page={1}";
 		HtmlWeb web;
-		HtmlDocument index;
+		HtmlDocument htmlDoc;
 		
 		public MusicCrawler()
 		{
 			web = new HtmlWeb();
-			index = web.Load(AddressIndex);
+			htmlDoc = web.Load(AddressIndex);
 		}
 		
-		public IEnumerable<Musics> GetIndex()
+		public IEnumerable<Musics> GetIndex(int page = 1)
 		{
-			return ParseToMusicsObjects(ref this.index);
+			htmlDoc = web.Load(string.Format(AddressIndex, page));
+			return ParseToMusicsObjects();
 		}
 		
-		private IEnumerable<Musics> ParseToMusicsObjects(ref HtmlDocument index)
+		public IEnumerable<Musics> GetMusicsBySinger(string singer, int page = 1)
 		{
 			List<Musics> ret = new List<Musics>();
-			HtmlNodeCollection MusicItems = index.DocumentNode.SelectNodes(@"//div[contains(@class,'bgmusic')]");
+			htmlDoc = web.Load(string.Format(AddressSingerFind, singer.Replace(' ', '+'), page));
+			
+			return ParseToMusicsObjects();
+		}
+		
+		private IEnumerable<Musics> ParseToMusicsObjects()
+		{
+			List<Musics> ret = new List<Musics>();
+			HtmlNodeCollection MusicItems = this.htmlDoc.DocumentNode.SelectNodes(@"//div[contains(@class,'bgmusic')]");
 			foreach (HtmlNode node in MusicItems) {
 				/*
 				 * TODO:
@@ -40,6 +49,7 @@ namespace WebCrawler
 				Musics MusicItem = new Musics();
 				MusicItem.SongName = node.SelectSingleNode(@".//h3/a").InnerText;
 				MusicItem.URLWeb = node.SelectSingleNode(@".//h3/a").Attributes["href"].Value;
+				MusicItem.URLId = MusicItem.URLWeb.ToString().Split('.').Reverse().ToArray()[1];
 				MusicItem.Singers = new MongoDB.Bson.BsonArray();
 				StringReformat(ref MusicItem, node.SelectSingleNode(@".//p").InnerText);
 				ret.Add(MusicItem);

@@ -10,25 +10,40 @@ using MaterialSkin.Controls;
 using MusicListLibrary.Models;
 using WebCrawler;
 using System.Windows.Forms;
+using Bunifu.Framework.UI;
 
 namespace MusicList
 {
 	public partial class MainForm : MaterialForm
 	{
 		public static volatile Users session;
+		private MusicCrawler crawler;
 		private List<Musics> IndexMusics;
+		private List<BunifuThinButton2> lsPages;
 
 		public MainForm()
 		{
 			InitializeComponent();
 			IndexMusics = new List<Musics>();
+			lsPages = new List<BunifuThinButton2>();
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
 		}
 
 		#region Functions
-		public static List<Color> RgbLinearInterpolate(Color start, Color end, int colorCount)
+		private void AddMusicItems()
+		{
+			this.pnlMusicItemsList.Controls.Clear();
+			foreach (Musics music in IndexMusics) {
+				CustomMusicItem custom = new CustomMusicItem(music);
+				custom.Dock = DockStyle.Top;
+				this.pnlMusicItemsList.Controls.Add(custom);
+				custom.MusicNameClick += custom_MusicNameClick;
+				custom.ArtitstNameClick += custom_ArtitstNameClick;
+			}
+		}
+		private static List<Color> RgbLinearInterpolate(Color start, Color end, int colorCount)
 		{
 			List<Color> ret = new List<Color>();
 
@@ -48,6 +63,25 @@ namespace MusicList
 		}
 		private void InitTheme()
 		{
+			for (int i = 4; i >= 1; i--) {
+				BunifuThinButton2 button = new BunifuThinButton2 {
+					ButtonText = i.ToString(),
+					Dock = DockStyle.Left,
+					//Font = new Font("Arial", FontStyle.Bold),
+					ActiveFillColor = Color.FromArgb(255, 0, 40, 77),
+					ActiveLineColor = Color.FromArgb(255, 0, 40, 77),
+					ActiveForecolor = Color.White,
+					IdleFillColor = Color.White,
+					IdleLineColor = Color.FromArgb(255, 0, 40, 77),
+					IdleForecolor = Color.FromArgb(255, 0, 40, 77),
+					TextAlign = ContentAlignment.MiddleCenter,
+					Width = 45,
+					Height = 29
+				};
+				lsPages.Add(button);
+				pnlPages.Controls.Add(button);
+				
+			}
 			MaterialSkinManager manager = MaterialSkinManager.Instance;
 			manager.AddFormToManage(this);
 			manager.Theme = MaterialSkinManager.Themes.DARK;
@@ -81,13 +115,10 @@ namespace MusicList
 				
 				this.Cursor = Cursors.WaitCursor;
 				await Task.Run(() => GetIndexMusics());
-				foreach (Musics music in IndexMusics) {
-					CustomMusicItem custom = new CustomMusicItem(music);
-					custom.Dock = DockStyle.Top;
-					this.pnlMusicItemsList.Controls.Add(custom);
-					custom.MusicNameClick+= custom_MusicNameClick;
-					custom.ArtitstNameClick+= custom_ArtitstNameClick;
-				}
+				
+				this.pnlMusicItemsList.Visible = false;
+				this.AddMusicItems();
+				this.pnlMusicItemsList.Visible = true;
 				this.Cursor = Cursors.Arrow;
 				
 				UpdateInfoLogin();
@@ -96,11 +127,14 @@ namespace MusicList
 
 		void custom_MusicNameClick(object sender, EventArgs e)
 		{
-			MessageBox.Show(((CustomMusicItem)sender).SongName);
+			//TODO: implement play music here
+			MessageBox.Show(((CustomMusicItem)sender).MusicURL);
+			MessageBox.Show(((CustomMusicItem)sender).MusicId);
 		}
 
 		void custom_ArtitstNameClick(object sender, EventArgs e)
 		{
+			//TODO: implement find by singer here
 			MessageBox.Show(((CustomMusicItem)sender).SingerName);
 		}
 		
@@ -123,18 +157,25 @@ namespace MusicList
 			pl.ShowDialog(this);
 		}
 
-		void LblFindClick(object sender, EventArgs e)
+		async void LblFindClick(object sender, EventArgs e)
 		{
 			if (this.txtFind.Width > 0) {
 				if (this.txtFind.Text.Length == 0) {
 					Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
 					t.Start(false as object);
+					this.cbxFindBy.Visible = false;
+					this.lblFindBy.Visible = false;
 				} else {
-					CustomMessageBox.Show(this.txtFind.Text, "Find", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info, CustomMessageBox.AnimateStyle.FadeIn);
+					if (this.cbxFindBy.SelectedIndex == 0) {
+						await Task.Run(() => GetMusicsBySinger(this.txtFind.Text));
+						this.AddMusicItems();
+					}
 				}
 			} else {
 				Thread t = new Thread(new ParameterizedThreadStart(EditTxtFind));
 				t.Start(true as object);
+				this.cbxFindBy.Visible = true;
+				this.lblFindBy.Visible = true;
 			}
 		}
 		#endregion Events
@@ -162,7 +203,7 @@ namespace MusicList
 		}
 		private void EditTxtFind(object expend)
 		{
-			int value = (bool)expend == true ? 30 : -30;
+			int value = (bool)expend ? 30 : -30;
 			for (int i = 0; i < 16; i++) {
 				txtFind.Width += value;
 				Thread.Sleep(1);
@@ -183,10 +224,15 @@ namespace MusicList
 			}
 		}
 		
-		private async void GetIndexMusics()
+		private async void GetMusicsBySinger(string singer, int page = 1)
 		{
-			MusicCrawler crawler = new MusicCrawler();
-			IndexMusics = crawler.GetIndex().ToList();
+			crawler = new MusicCrawler();
+			IndexMusics = crawler.GetMusicsBySinger(singer, page).ToList();
+		}
+		private async void GetIndexMusics(int page = 1)
+		{
+			crawler = new MusicCrawler();
+			IndexMusics = crawler.GetIndex(page).ToList();
 		}
 		#endregion Threading
 	}
