@@ -18,15 +18,17 @@ namespace MusicListLibrary.Models
 		[BsonRequired]
 		[BsonDefaultValue(null)]
 		public BsonArray Singers{get;set;}
-		[BsonRequired]
 		[BsonDefaultValue(0)]
 		public BsonInt32 Listens{get;set;}
+		[BsonDefaultValue(null)]
+		public BsonString Quality{get;set;}
 		[BsonRequired]
 		[BsonDefaultValue(null)]
 		public BsonString URLId{get;set;}
 		[BsonRequired]
 		[BsonDefaultValue(null)]
 		public BsonString URLWeb{get;set;}
+		[BsonRequired]
 		[BsonDefaultValue(null)]
 		public BsonString URLData{get;set;}
 		

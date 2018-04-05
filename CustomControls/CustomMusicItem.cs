@@ -6,18 +6,16 @@ namespace CustomControls
 {
 	public partial class CustomMusicItem : UserControl
 	{
-		private Musics music;
+		public Musics Music{ get; private set; }
+		public string Singer{ get; private set; } 
 		public event EventHandler MusicNameClick, ArtitstNameClick;
-		public string MusicURL{ get; private set; }
-		public string MusicId{ get; private set; }
-		public string SingerName{ get; private set; }
 		
 		public CustomMusicItem(Musics music)
 		{
 			InitializeComponent();
-			this.music = music;
-			this.lblMusicName.Text = this.music.SongName.ToString();
-			foreach (String singer in this.music.Singers) {
+			this.Music = music;
+			this.lblMusicName.Text=music.SongName.ToString();
+			foreach (String singer in this.Music.Singers) {
 				Label lblSinger = new Label {
 					Dock = DockStyle.Left,
 					Text = singer,
@@ -37,15 +35,13 @@ namespace CustomControls
 		
 		void LblMusicNameClick(object sender, EventArgs e)
 		{
-			this.MusicURL = this.music.URLWeb.ToString();
-			this.MusicId = this.music.URLId.ToString();
 			if (MusicNameClick != null) {
 				MusicNameClick(this, e);
 			}
 		}
 		void LblSingerClick(object sender, EventArgs e)
 		{
-			this.SingerName = ((Label)sender).Text;
+			this.Singer = (sender as Label).Text;
 			if (ArtitstNameClick != null) {
 				ArtitstNameClick(this, e);
 			}

@@ -22,8 +22,8 @@ namespace MusicList
 		private MusicCrawler crawler;
 		private List<Musics> IndexMusics;
 		private List<BunifuThinButton2> lsPages;
-		private List<bool> ErrorList;
-		//true is validate failure
+		private List<bool> ErrorList; //true is validate failure
+		private Musics Playing;
 
 
 		public MainForm()
@@ -138,13 +138,14 @@ namespace MusicList
 		void custom_MusicNameClick(object sender, EventArgs e)
 		{
 			//TODO: implement play music here
-			MessageBox.Show((sender as CustomMusicItem).MusicURL);
-			MessageBox.Show((sender as CustomMusicItem).MusicId);
+			this.Playing = (sender as CustomMusicItem).Music;
+			this.GetMusicURLData(ref this.Playing);
+			MessageBox.Show(this.Playing.URLData.ToString());
 		}
 
 		void custom_ArtitstNameClick(object sender, EventArgs e)
 		{
-			this.txtFind.Text = (sender as CustomMusicItem).SingerName;
+			this.txtFind.Text = (sender as CustomMusicItem).Singer;
 			this.GetMusicsBySinger(this.txtFind.Text);
 			this.AddMusicItems();
 		}
@@ -182,7 +183,6 @@ namespace MusicList
 
 		async void BtnUpdateInfoClick(object sender, EventArgs e)
 		{
-			//TODO: implement update user info
 			bool passed = true;
 			foreach (Control control in this.Controls) {
 				control.Focus();
@@ -345,6 +345,12 @@ namespace MusicList
 			IndexMusics.Clear();
 			IndexMusics = crawler.GetIndex(page).ToList();
 		}
+
+		void GetMusicURLData(ref Musics music)
+		{
+			crawler = new MusicCrawler();
+			crawler.GetMusicDataURL(ref music);
+		}
 		
 		private void UpdateInfoThread(){
 			UsersController userController = new UsersController();
@@ -358,9 +364,9 @@ namespace MusicList
 					MainForm.session.Email = this.txtEmail.Text;
 					MainForm.session.Fullname = this.txtFullName.Text;
 					userController.UpdateUser(ref MainForm.session);
-					CustomMessageBox.Show("User infomation updated");
+					CustomMessageBox.Show("User infomation updated", "Yay", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
 				} else
-					CustomMessageBox.Show("Incorrect password");
+					CustomMessageBox.Show("Incorrect password","Yay",CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
 			}
 		}
 		#endregion Threading

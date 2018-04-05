@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 using MusicListLibrary.Models;
+using System.Text.RegularExpressions;
 
 namespace WebCrawler
 {
@@ -40,6 +41,13 @@ namespace WebCrawler
 			htmlDoc = web.Load(string.Format(AddressSongFind, name.Replace(' ', '+'), page));
 			
 			return ParseToMusicsObjects();
+		}
+		
+		public void GetMusicDataURL(ref Musics music){
+			this.htmlDoc = web.Load(music.URLWeb.ToString());
+			HtmlNode node =  this.htmlDoc.DocumentNode.SelectSingleNode("//*[@id='fullPlayer']/div");
+			MatchCollection match = Regex.Matches(node.OuterHtml,@"(www.+|http.+)([\s]|$)");
+			music.URLData = match[0].Value.Split('\"')[0];
 		}
 		
 		private IEnumerable<Musics> ParseToMusicsObjects()
