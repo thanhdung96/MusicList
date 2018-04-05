@@ -63,6 +63,10 @@
     <Compile Include="CustomFlatButton.Designer.cs">
       <DependentUpon>CustomFlatButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomInputDialog.cs" />
+    <Compile Include="CustomInputDialog.Designer.cs">
+      <DependentUpon>CustomInputDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomMessageBox.cs" />
     <Compile Include="CustomMessageBox.Designer.cs">
       <DependentUpon>CustomMessageBox.cs</DependentUpon>
@@ -80,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CustomCheckbox.resx">
       <DependentUpon>CustomCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomInputDialog.resx">
+      <DependentUpon>CustomInputDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomMusicItem.resx">
       <DependentUpon>CustomMusicItem.cs</DependentUpon>

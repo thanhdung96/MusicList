@@ -89,13 +89,13 @@ namespace MusicList
 		{
 			const string FullnameRegex = @"^[a-zA-Z\s]+$";
 			if (string.IsNullOrEmpty(this.txtFullname.Text)) {
-				ErrorPrivider.SetError(this.txtFullname, "Enter your name");
+				ErrorProvider.SetError(this.txtFullname, "Enter your name");
 				ErrorList[0] = true;
 			} else if (!Regex.IsMatch(this.txtFullname.Text, FullnameRegex)) {
-				ErrorPrivider.SetError(this.txtFullname, "Strange Name");
+				ErrorProvider.SetError(this.txtFullname, "Strange Name");
 				ErrorList[0] = true;
 			} else {
-				ErrorPrivider.SetError(this.txtFullname, null);
+				ErrorProvider.SetError(this.txtFullname, null);
 				ErrorList[0] = false;
 			}
 		}
@@ -103,13 +103,13 @@ namespace MusicList
 		{
 			const string EmailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
 			if (String.IsNullOrEmpty(this.txtEmail.Text)) {
-				ErrorPrivider.SetError(this.txtEmail, "Give us your email, moron!");
+				ErrorProvider.SetError(this.txtEmail, "Give us your email, moron!");
 				ErrorList[1] = true;
 			} else if (!Regex.IsMatch(this.txtEmail.Text, EmailRegex)) {
-				ErrorPrivider.SetError(this.txtEmail, "Invalid email format!");
+				ErrorProvider.SetError(this.txtEmail, "Invalid email format!");
 				ErrorList[1] = true;
 			} else {
-				ErrorPrivider.SetError(this.txtEmail, null);
+				ErrorProvider.SetError(this.txtEmail, null);
 				ErrorList[1] = false;
 			}
 		}
@@ -117,36 +117,36 @@ namespace MusicList
 		{
 			const string PasswordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,20}$";
 			if (String.IsNullOrEmpty(this.txtPassword.Text)) {
-				ErrorPrivider.SetError(this.txtPassword, "Empty password");
+				ErrorProvider.SetError(this.txtPassword, "Empty password");
 				ErrorList[2] = true;
 			} else if (!Regex.IsMatch(this.txtPassword.Text, PasswordRegex)) {
-				ErrorPrivider.SetError(this.txtPassword, "Password must be at least:\n1 uppercase,\n1 lowercase,\n1 special character\n 8 to 20 characters wide.");
+				ErrorProvider.SetError(this.txtPassword, "Password must be at least:\n1 uppercase,\n1 lowercase,\n1 special character\n 8 to 20 characters wide.");
 				ErrorList[2] = true;
 			} else {
-				ErrorPrivider.SetError(this.txtPassword, null);
+				ErrorProvider.SetError(this.txtPassword, null);
 				ErrorList[2] = false;
 			}
 		}
 		void TxtConfirmValidating(object sender, CancelEventArgs e)
 		{
 			if (String.IsNullOrEmpty(this.txtConfirm.Text)) {
-				ErrorPrivider.SetError(this.txtConfirm, "Please confirm your password");
+				ErrorProvider.SetError(this.txtConfirm, "Please confirm your password");
 				ErrorList[3] = true;
 			} else if (!this.txtConfirm.Text.Equals(this.txtPassword.Text)) {
-				ErrorPrivider.SetError(this.txtConfirm, "Confirm password is not match");
+				ErrorProvider.SetError(this.txtConfirm, "Confirm password is not match");
 				ErrorList[3] = true;
 			} else {
-				ErrorPrivider.SetError(this.txtConfirm, null);
+				ErrorProvider.SetError(this.txtConfirm, null);
 				ErrorList[3] = false;
 			}
 		}
 		void DtpDOBValidating(object sender, CancelEventArgs e)
 		{
 			if(this.dtpDOB.Value >= DateTime.Today){
-				ErrorPrivider.SetError(this.dtpDOB, "So fictional date of birth");
+				ErrorProvider.SetError(this.dtpDOB, "So fictional date of birth");
 				ErrorList[4] = true;
 			}else {
-				ErrorPrivider.SetError(this.dtpDOB, null);
+				ErrorProvider.SetError(this.dtpDOB, null);
 				ErrorList[4] = false;
 			}
 		}

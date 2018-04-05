@@ -21,7 +21,8 @@ namespace MusicListLibrary.Controllers
 			return repo.FindOne(find) != null;
 		}
 		
-		public Users Login(ref Users user){
+		public Users Login(ref Users user)
+		{
 			return repo.FindOne(user);
 		}
 		
@@ -34,13 +35,9 @@ namespace MusicListLibrary.Controllers
 			return false;
 		}
 		
-		public bool UpdateUser(ref Users user)
+		public void UpdateUser(ref Users user)
 		{
-			if (!this.IsExist(user)) {
-				repo.UpdateOne(ref user);
-				return true;
-			}
-			return false;
+			repo.UpdateOne(ref user);
 		}
 	}
 }

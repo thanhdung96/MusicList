@@ -35,7 +35,7 @@ namespace MusicList
 		private MetroDateTime dtpDOB;
 		private MetroComboBox cbxGender;
 		private MaterialSingleLineTextField txtConfirm;
-		private ErrorProvider ErrorPrivider;
+		private ErrorProvider ErrorProvider;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -75,10 +75,10 @@ namespace MusicList
 			this.materialLabel1 = new MaterialLabel();
 			this.txtConfirm = new MaterialSingleLineTextField();
 			this.btnRegister = new MaterialRaisedButton();
-			this.ErrorPrivider = new ErrorProvider(this.components);
+			this.ErrorProvider = new ErrorProvider(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
-			((ISupportInitialize)(this.ErrorPrivider)).BeginInit();
+			((ISupportInitialize)(this.ErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -357,9 +357,9 @@ namespace MusicList
 			// 
 			// ErrorPrivider
 			// 
-			this.ErrorPrivider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-			this.ErrorPrivider.ContainerControl = this;
-			this.ErrorPrivider.Icon = global::MusicList.resource.cancel_1;
+			this.ErrorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+			this.ErrorProvider.ContainerControl = this;
+			this.ErrorProvider.Icon = global::MusicList.resource.cancel_1;
 			// 
 			// RegisterForm
 			// 
@@ -376,7 +376,7 @@ namespace MusicList
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
-			((ISupportInitialize)(this.ErrorPrivider)).EndInit();
+			((ISupportInitialize)(this.ErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
 		}

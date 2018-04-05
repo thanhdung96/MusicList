@@ -47,12 +47,6 @@ namespace WebCrawler
 			List<Musics> ret = new List<Musics>();
 			HtmlNodeCollection MusicItems = this.htmlDoc.DocumentNode.SelectNodes(@"//div[contains(@class,'bgmusic')]");
 			foreach (HtmlNode node in MusicItems) {
-				/*
-				 * TODO:
-				 * scrap info from web, parse as music instance
-				 * add instance to list ret then return
-				 * url music data get later
-				 */
 				Musics MusicItem = new Musics();
 				MusicItem.SongName = node.SelectSingleNode(@".//h3/a").InnerText;
 				MusicItem.URLWeb = node.SelectSingleNode(@".//h3/a").Attributes["href"].Value;

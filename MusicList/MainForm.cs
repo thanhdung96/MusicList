@@ -11,6 +11,8 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using MusicListLibrary.Models;
 using WebCrawler;
+using MusicListLibrary.Controllers;
+using System.Text.RegularExpressions;
 
 namespace MusicList
 {
@@ -20,12 +22,18 @@ namespace MusicList
 		private MusicCrawler crawler;
 		private List<Musics> IndexMusics;
 		private List<BunifuThinButton2> lsPages;
+		private List<bool> ErrorList;
+		//true is validate failure
+
 
 		public MainForm()
 		{
 			InitializeComponent();
 			IndexMusics = new List<Musics>();
 			lsPages = new List<BunifuThinButton2>();
+			ErrorList = new List<bool>(5);
+			for (int i = 0; i < 5; i++)
+				ErrorList.Add(false);
 			this.cbxFindBy.SelectedIndex = 0;
 			
 			InitTheme();
@@ -64,7 +72,7 @@ namespace MusicList
 		}
 		private void InitTheme()
 		{
-			for (int i = 5; i >= 1; i--) {
+			for (int i = 6; i >= 1; i--) {
 				BunifuThinButton2 button = new BunifuThinButton2 {
 					ButtonText = i.ToString(),
 					Dock = DockStyle.Left,
@@ -75,8 +83,8 @@ namespace MusicList
 					IdleLineColor = Color.FromArgb(255, 0, 40, 77),
 					IdleForecolor = Color.FromArgb(255, 0, 40, 77),
 					TextAlign = ContentAlignment.MiddleCenter,
-					Width = 40,
-					Height = 29
+					Width = 30,
+					Height = 29,
 				};
 				button.Click += button_Click;
 				lsPages.Add(button);
@@ -130,28 +138,27 @@ namespace MusicList
 		void custom_MusicNameClick(object sender, EventArgs e)
 		{
 			//TODO: implement play music here
-			MessageBox.Show(((CustomMusicItem)sender).MusicURL);
-			MessageBox.Show(((CustomMusicItem)sender).MusicId);
+			MessageBox.Show((sender as CustomMusicItem).MusicURL);
+			MessageBox.Show((sender as CustomMusicItem).MusicId);
 		}
 
 		void custom_ArtitstNameClick(object sender, EventArgs e)
 		{
-			//TODO: implement find by singer here
-			this.txtFind.Text = ((CustomMusicItem)sender).SingerName;
+			this.txtFind.Text = (sender as CustomMusicItem).SingerName;
 			this.GetMusicsBySinger(this.txtFind.Text);
 			this.AddMusicItems();
 		}
 
 		void button_Click(object sender, EventArgs e)	//page number clicked
 		{
+			//FIXME: fix final page music cannot parse 
 			BunifuThinButton2 clickedButton = sender as BunifuThinButton2;
 			if (clickedButton.Font.Style == FontStyle.Regular) {
 				if (!string.IsNullOrEmpty(this.txtFind.Text)) {		//if find query is not empty
 					if (this.cbxFindBy.SelectedIndex == 0) {		//if finding singer
 						GetMusicsBySinger(this.txtFind.Text, Convert.ToInt32(clickedButton.ButtonText));
 						this.AddMusicItems();
-					}
-					else{
+					} else {
 						GetMusicsByName(this.txtFind.Text, Convert.ToInt32(clickedButton.ButtonText));
 						this.AddMusicItems();
 					}
@@ -173,9 +180,24 @@ namespace MusicList
 			thread.Start(tabindex);
 		}
 
-		void BtnUpdateInfoClick(object sender, EventArgs e)
+		async void BtnUpdateInfoClick(object sender, EventArgs e)
 		{
-			
+			//TODO: implement update user info
+			bool passed = true;
+			foreach (Control control in this.Controls) {
+				control.Focus();
+			}
+			foreach (bool ValidateFailed in ErrorList) {
+				if(ValidateFailed){
+					passed=false;
+					MessageBox.Show("Verify information");
+					break;
+				}
+			}
+
+			if(passed){
+				await Task.Run(() => UpdateInfoThread());
+			}
 		}
 		
 		void BtnShowPlaylistsClick(object sender, EventArgs e)
@@ -200,7 +222,7 @@ namespace MusicList
 					if (this.cbxFindBy.SelectedIndex == 0) {
 						await Task.Run(() => GetMusicsBySinger(this.txtFind.Text));
 						this.AddMusicItems();
-					}else{
+					} else {
 						/*
 						 * else find by music name
 						 * */
@@ -213,6 +235,50 @@ namespace MusicList
 				t.Start(true as object);
 				this.cbxFindBy.Visible = true;
 				this.lblFindBy.Visible = true;
+			}
+		}
+		
+		void TxtFullNameValidating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			const string FullnameRegex = @"^[a-zA-Z\s]+$";
+			if (string.IsNullOrEmpty(this.txtFullName.Text)) {
+				ErrorProvider.SetError(this.txtFullName, "Enter your name");
+				ErrorList[0] = true;
+			} else if (!Regex.IsMatch(this.txtFullName.Text, FullnameRegex)) {
+				ErrorProvider.SetError(this.txtFullName, "Strange Name");
+				ErrorList[0] = true;
+			} else {
+				ErrorProvider.SetError(this.txtFullName, null);
+				ErrorList[0] = false;
+			}
+		}
+		
+		void TxtEmailValidating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			const string EmailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
+			if (String.IsNullOrEmpty(this.txtEmail.Text)) {
+				ErrorProvider.SetError(this.txtEmail, "Give us your email, moron!");
+				ErrorList[1] = true;
+			} else if (!Regex.IsMatch(this.txtEmail.Text, EmailRegex)) {
+				ErrorProvider.SetError(this.txtEmail, "Invalid email format!");
+				ErrorList[1] = true;
+			} else {
+				ErrorProvider.SetError(this.txtEmail, null);
+				ErrorList[1] = false;
+			}
+		}
+		
+		void TxtPasswordValidating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			const string PasswordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,20}$";
+			if (String.IsNullOrEmpty(this.txtPassword.Text)) {
+				;
+			} else if (!Regex.IsMatch(this.txtPassword.Text, PasswordRegex)) {
+				ErrorProvider.SetError(this.txtPassword, "Password must be at least:\n1 uppercase,\n1 lowercase,\n1 special character\n 8 to 20 characters wide.");
+				ErrorList[2] = true;
+			} else {
+				ErrorProvider.SetError(this.txtPassword, null);
+				ErrorList[2] = false;
 			}
 		}
 		#endregion Events
@@ -278,6 +344,24 @@ namespace MusicList
 			crawler = new MusicCrawler();
 			IndexMusics.Clear();
 			IndexMusics = crawler.GetIndex(page).ToList();
+		}
+		
+		private void UpdateInfoThread(){
+			UsersController userController = new UsersController();
+			CustomInputDialog inputdialog = new CustomInputDialog("Type your current password", "Password", "");
+			if (inputdialog.ShowDialog() == DialogResult.OK) {
+				MainForm.session.Password = inputdialog.ResultText;
+				if (userController.IsExist(MainForm.session)) {
+					if(!string.IsNullOrEmpty(this.txtPassword.Text)){
+						MainForm.session.Password = this.txtPassword.Text;
+					}
+					MainForm.session.Email = this.txtEmail.Text;
+					MainForm.session.Fullname = this.txtFullName.Text;
+					userController.UpdateUser(ref MainForm.session);
+					CustomMessageBox.Show("User infomation updated");
+				} else
+					CustomMessageBox.Show("Incorrect password");
+			}
 		}
 		#endregion Threading
 	}
