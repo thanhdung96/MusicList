@@ -57,7 +57,7 @@ namespace CustomControls
 			}
 		}
 		
-		async void UpdateIconCallback(object newValue)
+		void UpdateIconCallback(object newValue)
 		{
 			this.ptbIcon.Height = 0;
 			if (this.Function == Functions.Shuffle) {

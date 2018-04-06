@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,16 +10,15 @@ using Bunifu.Framework.UI;
 using CustomControls;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using MusicListLibrary.Controllers;
 using MusicListLibrary.Models;
 using WebCrawler;
-using MusicListLibrary.Controllers;
-using System.Text.RegularExpressions;
 
 namespace MusicList
 {
 	public partial class MainForm : MaterialForm
 	{
-		public static volatile Users session;
+		public static Users session;
 		private MusicCrawler crawler;
 		private List<Musics> IndexMusics;
 		private List<BunifuThinButton2> lsPages;
@@ -139,7 +139,7 @@ namespace MusicList
 		{
 			//TODO: implement play music here
 			this.Playing = (sender as CustomMusicItem).Music;
-			this.GetMusicURLData(ref this.Playing);
+			this.GetMusicURLData(ref Playing);
 			MessageBox.Show(this.Playing.URLData.ToString());
 		}
 

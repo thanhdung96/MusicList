@@ -23,7 +23,12 @@ namespace MusicListLibrary.Repositories
 		
 		public IQueryable<T> All<T>() where T:class, new()
 		{
-			return typeof(T) != typeof(Users) ? db.GetCollection<T>("Playlists").AsQueryable() : db.GetCollection<T>("Users").AsQueryable();
+			String collection = "";
+			if(typeof(T) == typeof(Users))
+			   collection = "Users";
+			else
+				collection = typeof(T)==typeof(Musics) ? "Musics" : "Playlist";
+			return db.GetCollection<T>(collection).AsQueryable();
 		}
 		
 		public T FindOne<T>(Expression<Func<T, bool>> expression) where T:class, new()
@@ -33,27 +38,38 @@ namespace MusicListLibrary.Repositories
 		
 		public void AddOne<T>(T item) where T:class, new()
 		{
-			String collectionName = item is Users ? "Users" : "Playlists";
-			db.GetCollection<T>(collectionName).InsertOne(item);
+			String collection = "";
+			if (item is Users)
+				collection = "Users";
+			else
+				collection = item is Musics ? "Musics" : "Playlist";
+			db.GetCollection<T>(collection).InsertOne(item);
 		}
 		
 		public void AddMany<T>(IEnumerable<T> items) where T:class, new()
 		{
-			String collectionName = typeof(T) == typeof(Users) ? "Users" : "Playlists";
-			db.GetCollection<T>(collectionName).InsertMany(items);
+			String collection = "";
+			if(typeof(T) == typeof(Users))
+			   collection = "Users";
+			else
+				collection = typeof(T)==typeof(Musics) ? "Musics" : "Playlist";
+			db.GetCollection<T>(collection).InsertMany(items);
 		}
 		
 		public void DeleteOne<T>(T item) where T:class, new()
 		{
-			String collectionName = item is Users ? "Users" : "Playlists";
+			String collection = "";
+			if (item is Users)
+				collection = "Users";
+			else
+				collection = item is Musics ? "Musics" : "Playlist";
 			var filter = Builders<T>.Filter.Eq("Id", item.GetType().GetProperty("Id").GetValue(item, null));
-			db.GetCollection<T>(collectionName).DeleteOne(filter);
+			db.GetCollection<T>(collection).DeleteOne(filter);
 		}
 		
 		public void DeleteMany<T>(Expression<Func<T, bool>> expression) where T:class, new()
 		{
 			IQueryable items = All<T>().Where(expression);
-			String collectionName = typeof(T) == typeof(Users) ? "Users" : "Playlists";
 			foreach (T item in items) {
 				this.DeleteOne(item);
 			}
@@ -61,9 +77,13 @@ namespace MusicListLibrary.Repositories
 
 		public void UpdateOne<T>(T item) where T:class, new()
 		{
-			String collectionName = item is Users ? "Users" : "Playlists";
+			String collection = "";
+			if (item is Users)
+				collection = "Users";
+			else
+				collection = item is Musics ? "Musics" : "Playlist";
 			var filter = Builders<T>.Filter.Eq("Id", item.GetType().GetProperty("Id").GetValue(item, null));
-			db.GetCollection<T>(collectionName).FindOneAndReplace(filter, item);
+			db.GetCollection<T>(collection).FindOneAndReplace(filter, item);
 		}
 		
 		public void Dispose()

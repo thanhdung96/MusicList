@@ -75,6 +75,10 @@
     <Compile Include="CustomMusicItem.Designer.cs">
       <DependentUpon>CustomMusicItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomNetworkCheck.cs" />
+    <Compile Include="CustomNetworkCheck.Designer.cs">
+      <DependentUpon>CustomNetworkCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resrouce.Designer.cs">
       <DependentUpon>resrouce.resx</DependentUpon>
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomMusicItem.resx">
       <DependentUpon>CustomMusicItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomNetworkCheck.resx">
+      <DependentUpon>CustomNetworkCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="resrouce.resx">
       <Generator>ResXFileCodeGenerator</Generator>
