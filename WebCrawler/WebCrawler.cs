@@ -48,6 +48,7 @@ namespace WebCrawler
 			HtmlNode node =  this.htmlDoc.DocumentNode.SelectSingleNode("//*[@id='fullPlayer']/div");
 			MatchCollection match = Regex.Matches(node.OuterHtml,@"(www.+|http.+)([\s]|$)");
 			music.URLData = match[0].Value.Split('\"')[0];
+			music.Quality=this.htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[8]/p/span[1]").InnerText.Substring(1);
 		}
 		
 		private IEnumerable<Musics> ParseToMusicsObjects()

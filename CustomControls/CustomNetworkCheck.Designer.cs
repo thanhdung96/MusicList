@@ -17,6 +17,7 @@ namespace CustomControls
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Timer UpdateTimer;
 		private System.Windows.Forms.PictureBox ptbStatus;
+		private System.Windows.Forms.ToolTip StatusTooltip;
 		
 		/// <summary>
 		/// Disposes resources used by the control.
@@ -43,6 +44,7 @@ namespace CustomControls
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.ptbStatus = new System.Windows.Forms.PictureBox();
 			this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
+			this.StatusTooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ptbStatus)).BeginInit();
 			this.SuspendLayout();
@@ -77,11 +79,16 @@ namespace CustomControls
 			// 
 			this.UpdateTimer.Interval = 1000;
 			// 
+			// StatusTooltip
+			// 
+			this.StatusTooltip.IsBalloon = true;
+			this.StatusTooltip.ToolTipTitle = "Network Status";
+			// 
 			// CustomNetworkCheck
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.White;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.MaximumSize = new System.Drawing.Size(30, 30);
 			this.MinimumSize = new System.Drawing.Size(15, 15);

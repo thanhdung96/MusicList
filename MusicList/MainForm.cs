@@ -12,6 +12,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using MusicListLibrary.Controllers;
 using MusicListLibrary.Models;
+using NAudio.Wave;
 using WebCrawler;
 
 namespace MusicList
@@ -22,9 +23,9 @@ namespace MusicList
 		private MusicCrawler crawler;
 		private List<Musics> IndexMusics;
 		private List<BunifuThinButton2> lsPages;
-		private List<bool> ErrorList; //true is validate failure
-		private Musics Playing;
-
+		private List<bool> ErrorList;
+		//true is validate failure
+		private volatile Musics Playing;
 
 		public MainForm()
 		{
@@ -135,12 +136,29 @@ namespace MusicList
 			}
 		}
 
-		void custom_MusicNameClick(object sender, EventArgs e)
+		async void custom_MusicNameClick(object sender, EventArgs e)
 		{
 			//TODO: implement play music here
 			this.Playing = (sender as CustomMusicItem).Music;
-			this.GetMusicURLData(ref Playing);
-			MessageBox.Show(this.Playing.URLData.ToString());
+			this.Cursor = Cursors.WaitCursor;
+			/*
+			 * FIXME: reorder these 2 tasks
+			 * 1/check if song is already in db
+			 * 2/if song is already in db get urldata from db
+			 * 3/if song is not in db, parse from web
+			 * */
+			await Task.Run(() => this.GetMusicURLData(ref this.Playing));
+			await Task.Run(() => CheckMusicInDB());
+			this.Cursor = Cursors.Arrow;
+			using (MediaFoundationReader mf = new MediaFoundationReader(this.Playing.URLData.ToString()))
+			using (WaveOutEvent wo = new WaveOutEvent()) {
+				wo.Init(mf);
+				wo.Play();
+				//wo.Volume=this.tbVolumn.Value/100;
+				while (wo.PlaybackState == PlaybackState.Playing) {
+					Thread.Sleep(1000);
+				}
+			}
 		}
 
 		void custom_ArtitstNameClick(object sender, EventArgs e)
@@ -188,14 +206,14 @@ namespace MusicList
 				control.Focus();
 			}
 			foreach (bool ValidateFailed in ErrorList) {
-				if(ValidateFailed){
-					passed=false;
+				if (ValidateFailed) {
+					passed = false;
 					MessageBox.Show("Verify information");
 					break;
 				}
 			}
 
-			if(passed){
+			if (passed) {
 				await Task.Run(() => UpdateInfoThread());
 			}
 		}
@@ -352,13 +370,14 @@ namespace MusicList
 			crawler.GetMusicDataURL(ref music);
 		}
 		
-		private void UpdateInfoThread(){
+		private void UpdateInfoThread()
+		{
 			UsersController userController = new UsersController();
 			CustomInputDialog inputdialog = new CustomInputDialog("Type your current password", "Password", "");
 			if (inputdialog.ShowDialog() == DialogResult.OK) {
 				MainForm.session.Password = inputdialog.ResultText;
 				if (userController.IsExist(MainForm.session)) {
-					if(!string.IsNullOrEmpty(this.txtPassword.Text)){
+					if (!string.IsNullOrEmpty(this.txtPassword.Text)) {
 						MainForm.session.Password = this.txtPassword.Text;
 					}
 					MainForm.session.Email = this.txtEmail.Text;
@@ -366,7 +385,15 @@ namespace MusicList
 					userController.UpdateUser(ref MainForm.session);
 					CustomMessageBox.Show("User infomation updated", "Yay", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
 				} else
-					CustomMessageBox.Show("Incorrect password","Yay",CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
+					CustomMessageBox.Show("Incorrect password", "Yay", CustomMessageBox.Buttons.OK, CustomMessageBox.Icon.Info);
+			}
+		}
+		public void CheckMusicInDB()
+		{
+			MusicsController musicController = new MusicsController();
+
+			if (!musicController.IsExist(this.Playing)) {
+				musicController.AddMusic(ref this.Playing);
 			}
 		}
 		#endregion Threading

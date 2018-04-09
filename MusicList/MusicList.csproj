@@ -71,6 +71,9 @@
     <Reference Include="MongoDB.Driver.Core">
       <HintPath>..\MusicListLibrary\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio">
+      <HintPath>NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -114,6 +117,7 @@
     <None Include="app.config" />
     <None Include="Bunifu_UI_v1.52.dll" />
     <None Include="MaterialSkin.dll" />
+    <None Include="NAudio.dll" />
     <None Include="Resource\cancel.ico" />
     <None Include="Resource\cancel.png" />
     <None Include="Resource\compact-disc.ico" />
