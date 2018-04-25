@@ -13,7 +13,7 @@ namespace CustomControls
 			InitializeComponent();
 			brushUnavailable = new SolidBrush(Color.OrangeRed);
 			brushAvailable = new SolidBrush(Color.LightGreen);
-			StatusTooltip.UseFading =true;
+			StatusTooltip.UseFading = true;
 			
 			UpdateTimer = new Timer();
 			UpdateTimer.Enabled = true;
@@ -25,12 +25,13 @@ namespace CustomControls
 			Bitmap bitmap = new Bitmap(ptbStatus.Width, ptbStatus.Height);
 			using (Graphics graphic = Graphics.FromImage(bitmap)) {
 				if (NetworkInterface.GetIsNetworkAvailable()) {
+					graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 					graphic.FillEllipse(brushAvailable, 10, 10, 10, 10);
-					StatusTooltip.SetToolTip(ptbStatus,"Available");
+					StatusTooltip.SetToolTip(ptbStatus, "Available");
 					
 				} else {
 					graphic.FillEllipse(brushUnavailable, 10, 10, 10, 10);
-					StatusTooltip.SetToolTip(ptbStatus,"Unavailable");
+					StatusTooltip.SetToolTip(ptbStatus, "Unavailable");
 				}
 			}
 			ptbStatus.Image = bitmap;

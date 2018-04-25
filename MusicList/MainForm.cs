@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,8 +13,9 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using MusicListLibrary.Controllers;
 using MusicListLibrary.Models;
-using NAudio.Wave;
 using WebCrawler;
+using System.Runtime.InteropServices;
+
 
 namespace MusicList
 {
@@ -26,16 +28,28 @@ namespace MusicList
 		private List<bool> ErrorList;
 		//true is validate failure
 		private volatile Musics Playing;
+		private Process ffmpeg;
+		private uint SeekTime;
+		
 
+		[DllImport("user32.dll", SetLastError = true)]
+		private static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+		[DllImport("user32.dll")]
+		private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 		public MainForm()
 		{
 			InitializeComponent();
+			this.DoubleBuffered = true;
+			ffmpeg = new Process();
+			
 			IndexMusics = new List<Musics>();
 			lsPages = new List<BunifuThinButton2>();
 			ErrorList = new List<bool>(5);
 			for (int i = 0; i < 5; i++)
 				ErrorList.Add(false);
 			this.cbxFindBy.SelectedIndex = 0;
+			SeekTime = 0;
 			
 			InitTheme();
 			this.tcMainTabControl.SelectedIndexChanged += tcMainTabControl_SelectedIndexChanged;
@@ -110,9 +124,19 @@ namespace MusicList
 			this.lblGender.Text = MainForm.session.Gender.ToBoolean() ? "Male" : "Female";
 			this.dtpDOB.Value = MainForm.session.DOB.ToLocalTime();
 		}
+		private void KillPlayProcess()
+		{
+			foreach (Process proc in Process.GetProcessesByName("ffplay")) {
+				proc.Kill();
+			}
+		}
 		#endregion Functions
 		
 		#region Events
+		void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			KillPlayProcess();
+		}
 		async void MainFormShown(object sender, EventArgs e)
 		{
 			LoginForm login = new LoginForm();
@@ -139,26 +163,26 @@ namespace MusicList
 		async void custom_MusicNameClick(object sender, EventArgs e)
 		{
 			//TODO: implement play music here
+			//preparing data
 			this.Playing = (sender as CustomMusicItem).Music;
 			this.Cursor = Cursors.WaitCursor;
-			/*
-			 * FIXME: reorder these 2 tasks
-			 * 1/check if song is already in db
-			 * 2/if song is already in db get urldata from db
-			 * 3/if song is not in db, parse from web
-			 * */
-			await Task.Run(() => this.GetMusicURLData(ref this.Playing));
+			await Task.Run(() => this.GetMusicURLData(ref Playing));
 			await Task.Run(() => CheckMusicInDB());
 			this.Cursor = Cursors.Arrow;
-			using (MediaFoundationReader mf = new MediaFoundationReader(this.Playing.URLData.ToString()))
-			using (WaveOutEvent wo = new WaveOutEvent()) {
-				wo.Init(mf);
-				wo.Play();
-				//wo.Volume=this.tbVolumn.Value/100;
-				while (wo.PlaybackState == PlaybackState.Playing) {
-					Thread.Sleep(1000);
-				}
-			}
+			
+			//streaming
+			KillPlayProcess();
+			SeekTimeTimer.Enabled = true;
+			SeekTime = 0;
+			ffmpeg.StartInfo.FileName = @"./ffmpeg/ffplay.exe";
+			ffmpeg.StartInfo.Arguments = "-noborder -nodisp -ss 0 " + this.Playing.URLData;
+			ffmpeg.StartInfo.CreateNoWindow = true;
+			ffmpeg.StartInfo.RedirectStandardOutput = true;
+			ffmpeg.StartInfo.UseShellExecute = false;
+			ffmpeg.EnableRaisingEvents = true;
+			
+			ffmpeg.Start();
+			Thread.Sleep(500);
 		}
 
 		void custom_ArtitstNameClick(object sender, EventArgs e)
@@ -299,6 +323,30 @@ namespace MusicList
 				ErrorList[2] = false;
 			}
 		}
+		void SeekTimeTimerTick(object sender, EventArgs e)
+		{
+			SeekTime += 1;
+		}
+		void BtnPlayPauseClick(object sender, EventArgs e)
+		{
+			
+			if (SeekTimeTimer.Enabled) {
+				this.btnPlayPause.Text = "|>";
+				KillPlayProcess();
+				SeekTimeTimer.Enabled = false;
+			} else {
+				this.btnPlayPause.Text = "||";
+				ffmpeg.StartInfo.FileName = @"./ffmpeg/ffplay.exe";
+				ffmpeg.StartInfo.Arguments = "-noborder -nodisp -ss " + this.SeekTime.ToString() + " " + this.Playing.URLData;
+				ffmpeg.StartInfo.CreateNoWindow = true;
+				ffmpeg.StartInfo.RedirectStandardOutput = true;
+				ffmpeg.StartInfo.UseShellExecute = false;
+				ffmpeg.EnableRaisingEvents = true;
+			
+				ffmpeg.Start();
+				SeekTimeTimer.Enabled = true;
+			}
+		}
 		#endregion Events
 		
 		#region Threading
@@ -393,7 +441,7 @@ namespace MusicList
 			MusicsController musicController = new MusicsController();
 
 			if (!musicController.IsExist(this.Playing)) {
-				musicController.AddMusic(ref this.Playing);
+				musicController.AddMusic(ref Playing);
 			}
 		}
 		#endregion Threading

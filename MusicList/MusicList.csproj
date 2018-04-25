@@ -116,6 +116,19 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Bunifu_UI_v1.52.dll" />
+    <None Include="ffmpeg\avcodec-57.dll" />
+    <None Include="ffmpeg\avdevice-57.dll" />
+    <None Include="ffmpeg\avfilter-6.dll" />
+    <None Include="ffmpeg\avformat-57.dll" />
+    <None Include="ffmpeg\avutil-55.dll" />
+    <None Include="ffmpeg\ffmpeg.exe" />
+    <None Include="ffmpeg\ffplay.exe" />
+    <None Include="ffmpeg\ffprobe.exe" />
+    <None Include="ffmpeg\postproc-54.dll" />
+    <None Include="ffmpeg\swresample-2.dll" />
+    <None Include="ffmpeg\swscale-4.dll" />
+    <None Include="ffmpeg\WAKE ME UP!.m4a" />
+    <None Include="ffmpeg\youtube-dl.exe" />
     <None Include="MaterialSkin.dll" />
     <None Include="NAudio.dll" />
     <None Include="Resource\cancel.ico" />
@@ -156,6 +169,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ffmpeg" />
     <Folder Include="Resource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
